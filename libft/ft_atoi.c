@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 14:26:00 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/03 04:18:39 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/02/07 16:22:40 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/02/13 17:26:49 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>  // lib for printf
-#include <fcntl.h>  // lib for open
-#include <sys/types.h>
-#include <sys/stat.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_atoi(const char *str)
 {
-	int		fd;
-	char	*line;
+	int	i;
+	int	nbr;
+	int	sign;
 
-	argc = argv;
-	fd = open("test", O_RDONLY);
-	while (1)
+	i = 0;
+	nbr = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		printf("%s, line");
-		free(line);
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nbr = (nbr * 10) + (str[i] - 48);
+		i++;
+	}
+	return (nbr * sign);
 }

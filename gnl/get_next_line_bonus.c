@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:12:04 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/03 02:43:02 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/03 02:26:28 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ char	ft_join(char *stash, char *buf)
 		free(stash);
 	}
 	else
-		tmp = ft_strdup(buf);
+		tmp = substr(buf);
 	return (tmp);
 }
 
-char	ft_read(int fd, static char *stash)
+void	ft_read(int fd, static char *stash)
 {
 	char	*buf;
 	ssize_t	ret_read;
@@ -34,7 +34,7 @@ char	ft_read(int fd, static char *stash)
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	ft_bzero(buf, BUFFER_SIZE + 1);
+	ft_bzero(buff, BUFFER_SIZE + 1);
 	while (ret_read > 0 && !(ft_isnewline(stash)))
 	{
 		ret_read = read(fd, buf, BUFFER_SIZE);
@@ -106,15 +106,15 @@ char	ft_clear(char *stash)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stash;
+	static char	*stash[5000];
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 1, 0) < 0)
 		return (NULL);
-	stash = ft_read(fd, stash);
-	if (!stash)
+	stash[fd] = ft_read(fd, stash[fd]);
+	if (!stash[fd])
 		return (NULL);
-	line = ft_extract(stash);
-	stash = ft_clear(stash);
+	line = ft_extract(stash[fd]);
+	stash[fd] = ft_clear(stash[fd]);
 	return (line);
 }
 //  lire fd pour le mettre dans stash

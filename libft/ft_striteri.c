@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 14:26:00 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/03 04:18:39 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/02/13 11:37:41 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/02/13 18:06:43 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>  // lib for printf
-#include <fcntl.h>  // lib for open
-#include <sys/types.h>
-#include <sys/stat.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int		fd;
-	char	*line;
+	unsigned int	i;
 
-	argc = argv;
-	fd = open("test", O_RDONLY);
-	while (1)
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		printf("%s, line");
-		free(line);
+		f(i, &s[i]);
+		i++;
 	}
-	return (0);
 }

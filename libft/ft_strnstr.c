@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 14:26:00 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/03 04:18:39 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/02/07 19:27:19 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/02/14 15:34:06 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>  // lib for printf
-#include <fcntl.h>  // lib for open
-#include <sys/types.h>
-#include <sys/stat.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-	int		fd;
-	char	*line;
+	size_t	i;
 
-	argc = argv;
-	fd = open("test", O_RDONLY);
-	while (1)
+	if (!s2[0])
+		return ((char *)s1);
+	if (!len)
+		return (NULL);
+	i = 0;
+	while (s1[i] && i < len)
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		printf("%s, line");
-		free(line);
+		if (ft_strncmp(s2, s1 + i, ft_strlen(s2)) == 0
+			&& i + ft_strlen(s2) <= len)
+			return ((char *)s1 + i);
+		i++;
 	}
-	return (0);
+	return (NULL);
 }

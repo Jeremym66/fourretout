@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 14:26:00 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/03 04:18:39 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/02/06 23:55:11 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/02/13 23:46:33 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>  // lib for printf
-#include <fcntl.h>  // lib for open
-#include <sys/types.h>
-#include <sys/stat.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+unsigned int	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int		fd;
-	char	*line;
+	size_t	i;
 
-	argc = argv;
-	fd = open("test", O_RDONLY);
-	while (1)
+	if (size == 0)
+		return (ft_strlen(src));
+	i = 0;
+	while (src[i] && i < (size - 1))
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		printf("%s, line");
-		free(line);
+		dst[i] = src[i];
+		i++;
 	}
-	return (0);
+	dst[i] = 0;
+	return (ft_strlen(src));
 }
