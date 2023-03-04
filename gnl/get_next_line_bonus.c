@@ -6,13 +6,13 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:12:04 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/03 02:26:28 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/04 00:17:36 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	ft_join(char *stash, char *buf)
+char	*ft_join(char *stash, char *buf)
 {
 	char	*tmp;
 
@@ -22,11 +22,11 @@ char	ft_join(char *stash, char *buf)
 		free(stash);
 	}
 	else
-		tmp = substr(buf);
+		tmp = ft_strdup(buf);
 	return (tmp);
 }
 
-void	ft_read(int fd, static char *stash)
+char	*ft_read(int fd, char *stash)
 {
 	char	*buf;
 	ssize_t	ret_read;
@@ -34,7 +34,7 @@ void	ft_read(int fd, static char *stash)
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	ft_bzero(buff, BUFFER_SIZE + 1);
+	ft_bzero(buf, BUFFER_SIZE + 1);
 	while (ret_read > 0 && !(ft_isnewline(stash)))
 	{
 		ret_read = read(fd, buf, BUFFER_SIZE);
@@ -52,7 +52,7 @@ void	ft_read(int fd, static char *stash)
 	return (stash);
 }
 
-char	ft_extract(char *stash)
+char	*ft_extract(char *stash)
 {
 	char	*out;
 	size_t	i;
@@ -78,7 +78,7 @@ char	ft_extract(char *stash)
 	return (out);
 }
 
-char	ft_clear(char *stash)
+char	*ft_clear(char *stash)
 {
 	size_t	i;
 	size_t	j;
@@ -108,7 +108,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*stash[5000];
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 1, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	stash[fd] = ft_read(fd, stash[fd]);
 	if (!stash[fd])

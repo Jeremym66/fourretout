@@ -6,13 +6,13 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:12:04 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/03 02:43:02 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:25:22 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	ft_join(char *stash, char *buf)
+char	*ft_join(char *stash, char *buf)
 {
 	char	*tmp;
 
@@ -26,7 +26,7 @@ char	ft_join(char *stash, char *buf)
 	return (tmp);
 }
 
-char	ft_read(int fd, static char *stash)
+char	*ft_read(int fd, char *stash)
 {
 	char	*buf;
 	ssize_t	ret_read;
@@ -52,7 +52,7 @@ char	ft_read(int fd, static char *stash)
 	return (stash);
 }
 
-char	ft_extract(char *stash)
+char	*ft_extract(char *stash)
 {
 	char	*out;
 	size_t	i;
@@ -78,7 +78,7 @@ char	ft_extract(char *stash)
 	return (out);
 }
 
-char	ft_clear(char *stash)
+char	*ft_clear(char *stash)
 {
 	size_t	i;
 	size_t	j;
