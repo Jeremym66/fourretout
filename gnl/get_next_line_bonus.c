@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:12:04 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/04 00:17:36 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:32:42 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char	*ft_clear(char *stash)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stash[5000];
+	static char	*stash[65535];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 04:39:46 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/07 05:09:46 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/03/07 09:52:01 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/03/07 15:18:46 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft"
-int	main(void)
-{
-	char	*coucou;
+#include "libftprintf.h"
 
-	coucou = NULL;
-	printf("\n(%d)\n\n", printf("%%, %c, %s, %d, %i, %u, %X, %x, %p, %p ", 'c', "coucou", 42, -42, 2147483647, 1658, 1203658, &coucou, coucou));
-	return (0);
+int	ft_printchar(char c)
+{
+	return (write(1, &c, 1));
 }
