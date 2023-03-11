@@ -6,11 +6,11 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:12:28 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/02 23:07:53 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:59:25 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_bzero(void *s, size_t n)
 {

@@ -6,13 +6,16 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:53:45 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/07 15:23:31 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/11 19:10:08 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printstr(char *str)
 {
-	return (write(1, str, ft_strlen(str)));
+	if (!str)
+		return (write (1, "(null)", 6));
+	else
+		return (write(1, str, ft_strlen(str)));
 }

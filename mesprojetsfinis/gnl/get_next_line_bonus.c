@@ -6,11 +6,11 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:12:04 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/07 15:32:42 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:58:32 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_join(char *stash, char *buf)
 {
@@ -35,6 +35,7 @@ char	*ft_read(int fd, char *stash)
 	if (!buf)
 		return (NULL);
 	ft_bzero(buf, BUFFER_SIZE + 1);
+	ret_read = 1;
 	while (ret_read > 0 && !(ft_isnewline(stash)))
 	{
 		ret_read = read(fd, buf, BUFFER_SIZE);
@@ -106,7 +107,7 @@ char	*ft_clear(char *stash)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stash[65535];
+	static char	*stash[BUFFER_SIZE + 1];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
@@ -117,12 +118,3 @@ char	*get_next_line(int fd)
 	stash[fd] = ft_clear(stash[fd]);
 	return (line);
 }
-//  lire fd pour le mettre dans stash
-//  extraire stash dans line
-//  clear le stash
-/* il me faut 	un buffer (buf) pour stocker la lecture grace a read
-		un static char* (stash) pour stocker le buffer au 
-		fur et a mesure des lectures dans lequel on checkera 
-		a chaque implémentation du buf s'il y a un /n ou /0 
- 		lorsque ce sera le cas on deplacera jusqu'au /n
-		inclus dans un char* (line) */

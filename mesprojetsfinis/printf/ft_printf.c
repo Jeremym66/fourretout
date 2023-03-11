@@ -6,11 +6,11 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 05:10:05 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/07 15:14:26 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:35:51 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_detect_param(char conv, va_list args)
 {
@@ -23,7 +23,8 @@ int	ft_detect_param(char conv, va_list args)
 	else if (conv == 'd' || conv == 'i')
 		return (ft_printnbr(va_arg(args, long int)));
 	else if (conv == 'u')
-		return (ft_printnbrbase(va_arg(args, unsigned int), "0123456789", conv));
+		return (ft_printnbrbase(va_arg(args, unsigned int),
+				"0123456789", conv));
 	else if (conv == 'x' || conv == 'X')
 		return (ft_printnbrbase(va_arg(args, unsigned int),
 				"0123456789ABCDEF", conv));

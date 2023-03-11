@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:12:04 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/03 16:25:22 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:15:35 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	*ft_read(int fd, char *stash)
 	if (!buf)
 		return (NULL);
 	ft_bzero(buf, BUFFER_SIZE + 1);
+	ret_read = 1;
 	while (ret_read > 0 && !(ft_isnewline(stash)))
 	{
 		ret_read = read(fd, buf, BUFFER_SIZE);
@@ -117,12 +118,3 @@ char	*get_next_line(int fd)
 	stash = ft_clear(stash);
 	return (line);
 }
-//  lire fd pour le mettre dans stash
-//  extraire stash dans line
-//  clear le stash
-/* il me faut 	un buffer (buf) pour stocker la lecture grace a read
-		un static char* (stash) pour stocker le buffer au 
-		fur et a mesure des lectures dans lequel on checkera 
-		a chaque implémentation du buf s'il y a un /n ou /0 
- 		lorsque ce sera le cas on deplacera jusqu'au /n
-		inclus dans un char* (line) */

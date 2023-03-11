@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:11:19 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/07 09:39:36 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:59:51 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 
 //		libs		//
 
-# include <stdlib.h> // lib for malloc free
-# include <unistd.h> // lib for read
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 4096
 # endif
 
 //		fct		//

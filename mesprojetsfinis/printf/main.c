@@ -6,22 +6,21 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:33:46 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/07 15:03:34 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:24:35 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <limits.h>
 
-int     main(void)
+int	main(void)
 {
-        char    *coucou;
+	char    *coucou;
 //	int	a;
 
 //	a = -2147483648;
-        coucou = NULL;
-        ft_printf("%%, %c, %s, %d, %i, %u, %X, %x, %p, %p \n", 'c', "coucou", 42, -42, -2147483646, -1658, -1203658, &coucou, coucou);
-           printf("%%, %c, %s, %d, %i, %u, %X, %x, %p, %p \n", 'c', "coucou", 42, -42, -2147483646, -1658, -1203658, &coucou, coucou);
-        return (0);
+	coucou = NULL;
+	ft_printf("%%, %c, %s, %d, %i, %u, %X, %x, %p, %p \n", 'c', "coucou", 42, -42, -2147483646, -1658, -1203658, &coucou, coucou);
+	printf("%%, %c, %s, %d, %i, %u, %X, %x, %p, %p \n", 'c', "coucou", 42, -42, -2147483646, -1658, -1203658, &coucou, coucou);
+	return (0);
 }
-

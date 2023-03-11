@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 09:46:03 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/07 15:21:22 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/03/11 18:36:21 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/03/11 18:36:42 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # if defined (__APPLE__)
 #  define PTR_NULL "0x0"
