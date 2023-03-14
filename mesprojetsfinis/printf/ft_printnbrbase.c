@@ -6,13 +6,13 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:48:13 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/11 18:37:25 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:34:02 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printnbrbase(long long int nbr, char *base, char conv)
+int	ft_printnbrbase(long int nbr, char *base, char conv)
 {
 	int	count;
 
@@ -28,7 +28,7 @@ int	ft_printnbrbase(long long int nbr, char *base, char conv)
 		count += ft_printchar(nbr + '0');
 	else if (nbr < ft_strlen(base))
 	{
-		if (conv == 'x' || conv == 'p')
+		if (conv == 'x')
 			count += ft_printchar(nbr - 10 + 'a');
 		else if (conv == 'X')
 			count += ft_printchar(nbr - 10 + 'A');

@@ -6,13 +6,14 @@
 #    By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 10:52:40 by jmetezea          #+#    #+#              #
-#    Updated: 2023/03/07 15:21:57 by jmetezea         ###   ########.fr        #
+#    Updated: 2023/03/14 11:58:31 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME            = libftprintf.a
 
-SRCS            = ft_strlen.c ft_printchar.c ft_printstr.c ft_printnbrbase.c ft_printnbr.c ft_printf.c
+SRCS            = ft_strlen.c ft_printchar.c ft_printstr.c ft_printnbrbase.c ft_printnbr.c ft_printf.c\
+		  ft_printnbrhexa.c
 
 OBJS            = ${SRCS:.c=.o}
 

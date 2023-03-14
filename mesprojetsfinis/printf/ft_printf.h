@@ -6,18 +6,14 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:36:21 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/11 18:36:42 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:59:24 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# if defined (__APPLE__)
-#  define PTR_NULL "0x0"
-# else
-#  define PTR_NULL "(nil)"
-# endif
+# define PTR_NULL "(nil)"
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -25,7 +21,8 @@
 # include <stdio.h>
 # include <stdint.h>
 
-int	ft_printnbrbase(long long int nbr, char *base, char conv);
+int	ft_printnbrhexa(long unsigned int nbr, char *base, char conv);
+int	ft_printnbrbase(long int nbr, char *base, char conv);
 int	ft_printchar(char c);
 int	ft_printstr(char *str);
 int	ft_strlen(char *str);

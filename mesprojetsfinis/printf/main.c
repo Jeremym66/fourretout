@@ -6,21 +6,24 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:33:46 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/11 18:24:35 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:22:46 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include <limits.h>
 
 int	main(void)
 {
-	char    *coucou;
-//	int	a;
+	char	*coucou;
 
-//	a = -2147483648;
 	coucou = NULL;
-	ft_printf("%%, %c, %s, %d, %i, %u, %X, %x, %p, %p \n", 'c', "coucou", 42, -42, -2147483646, -1658, -1203658, &coucou, coucou);
-	printf("%%, %c, %s, %d, %i, %u, %X, %x, %p, %p \n", 'c', "coucou", 42, -42, -2147483646, -1658, -1203658, &coucou, coucou);
+	ft_printf("%p // %p // %p // %p\n\n",(void *)-1, 15, ULONG_MAX, LONG_MIN);
+	printf("%p // %p // %p // %p\n\n", (void *)-1, (void *)15,
+		(void *)ULONG_MAX, (void *)LONG_MIN);
+	ft_printf("%%, %c, %s, %d, %i, %u, %X, %x, %p, %p \n", 'c', "coucou",
+		42, -42, -2147483646, -1658, -1203658, &coucou, coucou);
+	printf("%%, %c, %s, %d, %i, %u, %X, %x, %p, %p \n", 'c', "coucou",
+		42, -42, -2147483646, -1658, -1203658, &coucou, coucou);
 	return (0);
 }

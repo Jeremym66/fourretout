@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 05:10:05 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/03/11 18:35:51 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:59:32 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_detect_param(char conv, va_list args)
 {
-	unsigned long int	pointer;
+	long unsigned int	pointer;
 
 	if (conv == 'c')
 		return (ft_printchar(va_arg(args, int)));
@@ -30,11 +30,11 @@ int	ft_detect_param(char conv, va_list args)
 				"0123456789ABCDEF", conv));
 	else if (conv == 'p')
 	{
-		pointer = va_arg(args, unsigned long int);
+		pointer = va_arg(args, long unsigned int);
 		if (pointer == 0)
 			return (ft_printstr(PTR_NULL));
 		write(1, "0x", 2);
-		return (ft_printnbrbase(pointer, "0123456789ABCDEF", conv) + 2);
+		return (ft_printnbrhexa(pointer, "0123456789ABCDEF", conv) + 2);
 	}
 	else
 		return (ft_printchar(conv));
