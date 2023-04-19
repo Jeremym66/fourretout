@@ -6,13 +6,13 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 06:44:33 by kaly              #+#    #+#             */
-/*   Updated: 2023/04/18 19:45:57 by kaly             ###   ########.fr       */
+/*   Updated: 2023/04/19 16:45:00 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_rrotate_a(t_pile *a, int print)
+void	ft_rrotate_a(t_pile *a)
 {
 	t_elem	*previous_last;
 	t_elem	*last;
@@ -27,13 +27,9 @@ void	ft_rrotate_a(t_pile *a, int print)
 	a->top = last;
 	a->base = previous_last;
 	previous_last->next = NULL;
-	if (print == 1)
-		write(1, "rra\n", 4);
-	else
-		write(1, "rrr\n", 4);
 }
 
-void	ft_rrotate_b(t_pile *b, int print)
+void	ft_rrotate_b(t_pile *b)
 {
 	t_elem	*previous_last;
 	t_elem	*last;
@@ -47,12 +43,10 @@ void	ft_rrotate_b(t_pile *b, int print)
 	previous_last->next = NULL;
 	last->next = b->top;
 	b->top = last;
-	if (print == 1)
-		write(1, "rrb\n", 4);
 }
 
 void	ft_rrotate_ab(t_pile *a, t_pile *b)
 {
-	ft_rrotate_a(a, 2);
-	ft_rrotate_b(b, 2);
+	ft_rrotate_a(a);
+	ft_rrotate_b(b);
 }

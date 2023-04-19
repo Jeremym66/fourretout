@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 05:19:31 by kaly              #+#    #+#             */
-/*   Updated: 2023/04/18 19:45:10 by kaly             ###   ########.fr       */
+/*   Updated: 2023/04/19 16:45:54 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_push_a(t_pile *a, t_pile *b)
 	a->top = btoa;
 	b->top = secondb;
 	btoa->next = firsta;
-	write(1, "pa\n", 3);
 	b->nb_element--;
 	a->nb_element++;
 }
@@ -45,7 +44,6 @@ void	ft_push_b(t_pile *a, t_pile *b)
 	b->top = atob;
 	a->top = seconda;
 	atob->next = firstb;
-	write(1, "pb\n", 3);
 	a->nb_element--;
 	b->nb_element++;
 }

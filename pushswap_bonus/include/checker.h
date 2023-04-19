@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:11:19 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/04/18 23:42:00 by kaly             ###   ########.fr       */
+/*   Updated: 2023/04/19 15:52:10 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,16 @@ void	ft_check_sort(t_pile *a, t_pile *b);
 //		gps			//
 void	ft_gps(t_pile *pile);
 //		rules			//
-void	ft_swap_a(t_pile *pile, int print);
-void	ft_swap_b(t_pile *pile, int print);
+void	ft_swap_a(t_pile *pile);
+void	ft_swap_b(t_pile *pile);
 void	ft_swap_ab(t_pile *a, t_pile *b);
 void	ft_push_a(t_pile *a, t_pile *b);
 void	ft_push_b(t_pile *a, t_pile *b);
-void	ft_rotate_a(t_pile *a, int print);
-void	ft_rotate_b(t_pile *b, int print);
+void	ft_rotate_a(t_pile *a);
+void	ft_rotate_b(t_pile *b);
 void	ft_rotate_ab(t_pile *a, t_pile *b);
-void	ft_rrotate_a(t_pile *a, int print);
-void	ft_rrotate_b(t_pile *b, int print);
+void	ft_rrotate_a(t_pile *a);
+void	ft_rrotate_b(t_pile *b);
 void	ft_rrotate_ab(t_pile *a, t_pile *b);
 //		fct			//
 char	*get_next_line(int fd);
