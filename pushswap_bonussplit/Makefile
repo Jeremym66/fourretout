@@ -12,6 +12,8 @@ CC		= gcc
 
 SRC		= srcs/check_sort	\
 		  srcs/ft_atoi		\
+		  srcs/ft_split		\
+		  srcs/ft_justonearg	\
 		  srcs/gps		\
 		  srcs/push		\
 		  srcs/pushswap		\
@@ -27,6 +29,8 @@ SRC_BONUS	= srcs_bonus/check_arg		\
 		  srcs_bonus/checker		\
 		  srcs_bonus/check_sort		\
 		  srcs_bonus/ft_atoi		\
+		  srcs_bonus/ft_split		\
+		  srcs_bonus/ft_justonearg	\
 		  srcs_bonus/ft_strcmp		\
 		  srcs_bonus/get_next_line	\
 		  srcs_bonus/get_next_line_utils\
