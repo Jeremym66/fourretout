@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:17:19 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/01 15:14:55 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/02 14:25:02 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,23 @@ void	add_char_to_string(char c)
 		g_str = ft_strjoinc(g_str, c);
 }
 
-void	sig_user(int sig, siginfo_t *info, void *context)
+void	test_pid(siginfo_t *info)
 {
-	static char	c = 0;
-	static int	bit = -1;
-
-	(void)context;
 	if (kill(info->si_pid, 0) < 0)
 	{
 		ft_printf("\033[91mError: cant send sig to pid : %d\n\033[0m",
 			info->si_pid);
 		exit(EXIT_FAILURE);
 	}
+}
+
+void	sig_user(int sig, siginfo_t *info, void *context)
+{
+	static char	c = 0;
+	static int	bit = -1;
+
+	(void)context;
+	test_pid(info);
 	if (bit < 0 && !c)
 		ft_printf("\033[94m\nClient say : \033[0m");
 	if (bit < 0)
