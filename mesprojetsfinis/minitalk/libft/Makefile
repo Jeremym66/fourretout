@@ -6,7 +6,7 @@
 #    By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 16:25:21 by jmetezea          #+#    #+#              #
-#    Updated: 2023/04/01 18:03:30 by kaly             ###   ########.fr        #
+#    Updated: 2023/04/30 13:55:35 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ SRCS		= 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 			ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 			ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-			gnl/get_next_line.c \
-			gnl/get_next_line_utils.c \
 			ft_printf.c \
 			ft_printchar.c \
 			ft_printnbr.c \
@@ -31,7 +29,7 @@ SRCS		= 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 			ft_printstr.c \
 			ft_strlen_printf.c
 
-HEADERS		= libft.h gnl/get_next_line.h
+HEADERS		= libft.h
 
 OBJS		= ${SRCS:.c=.o}
 

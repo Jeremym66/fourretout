@@ -6,7 +6,7 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 12:02:03 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/04/01 18:03:54 by kaly             ###   ########.fr       */
+/*   Updated: 2023/04/30 13:55:04 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 
 //		Adds		//
-
-char			*get_next_line(int fd);
 int				ft_printnbrhexa(long unsigned int nbr, char *base, char conv);
 int				ft_printnbrbase(long int nbr, char *base, char conv);
 int				ft_printchar(char c);
