@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 15:03:55 by kaly              #+#    #+#             */
-/*   Updated: 2023/04/20 15:04:07 by kaly             ###   ########.fr       */
+/*   Created: 2023/05/10 18:28:01 by kaly              #+#    #+#             */
+/*   Updated: 2023/05/10 18:59:53 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <mlx.h>
+#include "so_long.h"
 
-int main(void)
+int	ft_check_move(t_data *data, char dest)
 {
-	void	*mlx_ptr;
-
-	mlx_ptr = mlx_init();
-	mlx_destroy_display(mlx_ptr);
-	free(mlx_ptr);
+	if (dest == 'E')
+	{
+		if (data->collect == 0)
+		{
+			data->exit = 0;
+			return (1);
+		}
+		if (data->collect > 0)
+			return (0);
+	}
+	if (dest == 'C')
+	{
+		data->collect--;
+		printf("There are %d collectibles left to find\n", data->collect);
+	}
+	return (1);
 }
