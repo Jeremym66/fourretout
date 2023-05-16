@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 23:40:05 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/12 15:13:22 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/16 17:39:39 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	ft_fill_floor(t_data *data)
 {
 	data->y = 0;
 	data->file = mlx_xpm_file_to_image(data->mlx_ptr,
-			"../img/carrelage.xpm", &data->pxl, &data->pxl);
+			"../img/fond2.xpm", &data->pxl, &data->pxl);
 	while ((data->y) < (data->map_y))
 	{
 		data->x = 0;
 		while ((data->x) < (data->map_x))
 		{
 			mlx_put_image_to_window (data->mlx_ptr, data->win_ptr,
-				data->file, data->pxl * data->x, data->pxl * data->y);
+				data->file, PXL * data->x, PXL * data->y);
 			data->x++;
 		}
 		data->y++;
@@ -83,19 +83,28 @@ int	render(t_data *data)
 		{
 			mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 			data->win_ptr = NULL;
-			printf("You Win !!\n");
+			ft_printf("You Win !!\n");
 		}
+	}
+	if (data->collect == 0 && data->exit_is_open == 0)
+	{
+		data->exit_is_open = 1;
+		data->x = data->exit_x;
+		data->y = data->exit_y;
+		ft_put_exit(data);
 	}
 	return (0);
 }
 
 void	ft_create_window(t_data *data)
 {
+	data->pxl = 50;
+	printf("============%d,%d\n", data->map_x, PXL);
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 		return ;
-	data->win_ptr = mlx_new_window(data->mlx_ptr, data->pxl * data->map_x,
-			data->pxl * data->map_y, "Zelda");
+	data->win_ptr = mlx_new_window(data->mlx_ptr, PXL * data->map_x,
+			PXL * data->map_y, "Zelda");
 	if (data->win_ptr == NULL)
 	{
 		free(data->win_ptr);

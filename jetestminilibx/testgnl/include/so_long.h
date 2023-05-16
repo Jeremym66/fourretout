@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:06:32 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/12 15:27:01 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/16 17:28:08 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@
 #  include <sys/types.h>
 #  include <sys/stat.h>
 #  include <stdlib.h>
-#  include <stdio.h>
 #  include "../minilibx/mlx.h"
+#  include "../printf/ft_printf.h"
 
 #  define MLX_ERROR 1
+#  define PXL 50
 
 typedef struct s_data {
         void    *mlx_ptr;
         void    *win_ptr;
         void    *file;
 	char	**map;
-        int     pxl;
-        int     map_x;
+	char	**path;
+        int	pxl;
+	int     map_x;
         int     map_y;
         int     x;
         int     y;
@@ -39,6 +41,9 @@ typedef struct s_data {
 	int	player;
 	int	collect;
 	int	exit;
+	int	exit_x;
+	int	exit_y;
+	int	exit_is_open;
 }       t_data;
 
 //		ft_split		//
@@ -53,6 +58,7 @@ char    *ft_join(char *line, char c);
 void    ft_check_arg(int argc, char **argv);
 int     ft_comp_ber(char *arg, char *str);
 int     ft_quit(t_data *data);
+int     ft_path(t_data *data, int y, int x);
 //		check_limit		//
 int	ft_check_limits(t_data *data);
 int     check_mid(char *line, t_data *data);

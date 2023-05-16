@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:55:25 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/06 23:02:01 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/16 17:07:50 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_configuration(t_data *data)
 {
 	if (data->player != 1 || data->collect < 1 || data->exit != 1)
 	{
-		printf("Error\nNot enough player exit or collectibles\n");
+		ft_printf("Error\nNot enough player exit or collectibles\n");
 		return (1);
 	}
 	return (0);
@@ -104,7 +104,7 @@ int	ft_check_limits(t_data *data)
 	if (check_up(data->map[i - 1], data) == 1)
 		return (1);
 	data->map_y = i;
-	if (ft_rect(data) == 1 || ft_configuration(data) == 1)
+	if (ft_rect(data) == 1 || ft_configuration(data) == 1 || ft_path(data, data->pl_y, data->pl_x) == 1)
 		return (1);
 	return (0);
 }
