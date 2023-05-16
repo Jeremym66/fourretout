@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:06:32 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 17:28:08 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/16 20:38:50 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ typedef struct s_data {
 	int	pl_x;
 	int	pl_y;
 	int	player;
+	int	check_collect;
 	int	collect;
+	int	check_exit;
 	int	exit;
 	int	exit_x;
 	int	exit_y;
@@ -54,11 +56,14 @@ void    ft_free_map(t_data *data);
 char    *ft_get_map(int fd);
 int     ft_check(char *line);
 char    *ft_join(char *line, char c);
+//		break_prog			//
+int     ft_quit(t_data *data);
+int     ft_quit2(t_data *data);
 //		check_arg		//
 void    ft_check_arg(int argc, char **argv);
 int     ft_comp_ber(char *arg, char *str);
-int     ft_quit(t_data *data);
-int     ft_path(t_data *data, int y, int x);
+void    check_c_e(t_data *data, int y, int x);
+void	ft_path(t_data *data, int y, int x);
 //		check_limit		//
 int	ft_check_limits(t_data *data);
 int     check_mid(char *line, t_data *data);

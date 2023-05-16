@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:55:25 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 17:07:50 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/16 20:30:40 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ int	ft_check_limits(t_data *data)
 	if (check_up(data->map[i - 1], data) == 1)
 		return (1);
 	data->map_y = i;
-	if (ft_rect(data) == 1 || ft_configuration(data) == 1 || ft_path(data, data->pl_y, data->pl_x) == 1)
+	if (ft_rect(data) == 1 || ft_configuration(data) == 1)
+		return (1);
+	ft_path(data, data->pl_y, data->pl_x);
+	if (data->collect != data->check_collect || data->exit != data->check_exit)
 		return (1);
 	return (0);
 }

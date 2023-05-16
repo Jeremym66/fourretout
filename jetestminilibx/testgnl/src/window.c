@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 23:40:05 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 17:39:39 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/16 21:34:23 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == 65307)
-		ft_quit(data);
+		ft_quit2(data);
 	if (keysym == 119 || keysym == 65362)
 		if (data->map[data->pl_y - 1][data->pl_x] != '1')
 			ft_move_up(data);
@@ -91,6 +91,8 @@ int	render(t_data *data)
 		data->exit_is_open = 1;
 		data->x = data->exit_x;
 		data->y = data->exit_y;
+			ft_printf("%d !!\n", data->exit_x);
+			ft_printf("%d !!\n", data->exit_y);
 		ft_put_exit(data);
 	}
 	return (0);
@@ -98,8 +100,6 @@ int	render(t_data *data)
 
 void	ft_create_window(t_data *data)
 {
-	data->pxl = 50;
-	printf("============%d,%d\n", data->map_x, PXL);
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 		return ;
@@ -111,7 +111,7 @@ void	ft_create_window(t_data *data)
 		return ;
 	}
 	mlx_hook(data->win_ptr, 2, 1L << 0, &handle_keypress, data);
-	mlx_hook(data->win_ptr, 17, 1L << 0, &ft_quit, data);
+	mlx_hook(data->win_ptr, 17, 1L << 0, &ft_quit2, data);
 	mlx_loop_hook(data->mlx_ptr, &render, data);
 	ft_fill_floor(data);
 	ft_complete_img(data);

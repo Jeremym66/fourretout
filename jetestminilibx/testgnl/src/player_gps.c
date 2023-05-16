@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:38:54 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 17:43:42 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/16 19:10:44 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	init_player(t_data *data)
 			{
 				data->pl_x = i;
 				data->pl_y = j;
-				ft_printf("Player's moves : %d\n", data->pl_move);
 				return ;
 			}
 			i++;

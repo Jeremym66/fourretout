@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 01:48:16 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 17:38:41 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/16 21:16:27 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	ft_put_exit(t_data *data)
 	{
 		data->exit_x = data->x;
 		data->exit_y = data->y;
+		ft_printf("%d !!\n", data->exit_x);
+                        ft_printf("%d !!\n", data->exit_y);
 		data->file = mlx_xpm_file_to_image(data->mlx_ptr,
 				"../img/exit_closed.xpm", &data->pxl, &data->pxl);
 	}

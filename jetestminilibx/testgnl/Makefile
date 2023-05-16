@@ -11,6 +11,7 @@ CC		= clang
 
 SRC		= src/so_long			\
 		  src/ft_split			\
+		  src/break_prog		\
 		  src/check_map			\
 		  src/check_move		\
 		  src/check_arg			\

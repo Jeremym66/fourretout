@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 19:41:54 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 17:29:50 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/16 19:10:49 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,13 @@ void	ft_free_map(t_data *data)
 	i = -1;
 	while (data->map[++i])
 		free(data->map[i]);
+	free(data->map);
+	i = -1;
+	while (data->path[++i])
+		free(data->path[i]);
+	free(data->path);
+	ft_printf("Error!\nThe map haven't a good format.\n");
+	free(data);
 }
 
 void	ft_check_map(char **argv, t_data *data)
@@ -96,21 +103,13 @@ void	ft_check_map(char **argv, t_data *data)
 		exit (EXIT_FAILURE);
 	}
 	buffer = ft_get_map(fd);
-	ft_printf("buffer =\n%s", buffer);
 	data->map = ft_split(buffer, '\n');
 	data->path = ft_split(buffer, '\n');
-//	ft_printf("***\n");
-//	ft_printf("%s\n", data->path[0]);
-//	ft_printf("+++\n");
-//	fflush(stdout);
 	free(buffer);
 	init_player(data);
 	if (ft_check_limits(data) == 1)
 	{
 		ft_free_map(data);
-		free(data->map);
-		free(data);
-		ft_printf("Error!\nThe map haven't a good format.\n");
 		exit (EXIT_FAILURE);
 	}
 	else
