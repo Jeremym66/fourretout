@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 19:41:54 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 19:10:49 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:46:21 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,13 @@ void	ft_check_map(char **argv, t_data *data)
 	int		fd;
 
 	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	buffer = ft_get_map(fd);
+	if (buffer == NULL || fd == -1)
 	{
+		free(data);
 		ft_printf("Error!\nThe map could not be read.\n");
 		exit (EXIT_FAILURE);
-	}
-	buffer = ft_get_map(fd);
+	}	
 	data->map = ft_split(buffer, '\n');
 	data->path = ft_split(buffer, '\n');
 	free(buffer);

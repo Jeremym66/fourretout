@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 01:48:16 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 21:16:27 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/18 09:54:09 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,13 @@ void	ft_put_exit(t_data *data)
 {
 	if (data->collect == 0)
 		data->file = mlx_xpm_file_to_image(data->mlx_ptr,
-				"../img/exit_open.xpm", &data->pxl, &data->pxl);
+				"../img/house_open.xpm", &data->pxl, &data->pxl);
 	else
 	{
 		data->exit_x = data->x;
 		data->exit_y = data->y;
-		ft_printf("%d !!\n", data->exit_x);
-                        ft_printf("%d !!\n", data->exit_y);
 		data->file = mlx_xpm_file_to_image(data->mlx_ptr,
-				"../img/exit_closed.xpm", &data->pxl, &data->pxl);
+				"../img/house_close.xpm", &data->pxl, &data->pxl);
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->file,
 		PXL * data->x, PXL * data->y);
