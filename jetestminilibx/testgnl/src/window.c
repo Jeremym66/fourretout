@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 23:40:05 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 21:34:23 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/18 09:00:34 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@ int	render(t_data *data)
 		data->exit_is_open = 1;
 		data->x = data->exit_x;
 		data->y = data->exit_y;
-			ft_printf("%d !!\n", data->exit_x);
-			ft_printf("%d !!\n", data->exit_y);
 		ft_put_exit(data);
 	}
 	return (0);
