@@ -2,8 +2,10 @@
 ## ARGUMENTS
 
 NAME		= so_long
+BONUS		= so_long_bonus
 CFLAGS		= -Wall -Werror -Wextra
-#CCFLAGS	= -lX11 -lXext -lmlx
+CCFLAGS		= -lX11 -lXext -lm -lbsd
+IFLAGS		= -I./include
 CC		= clang
 
 ############################################################
@@ -11,6 +13,7 @@ CC		= clang
 
 SRC		= src/so_long			\
 		  src/ft_split			\
+		  src/break_prog		\
 		  src/check_map			\
 		  src/check_move		\
 		  src/check_arg			\
@@ -19,16 +22,25 @@ SRC		= src/so_long			\
 		  src/player_gps		\
 		  src/check_limits
 
-#SRC_BONUS	= srcs_bonus/check_arg		\
+SRC_BONUS	= src_bonus/so_long_bonus	\
+		  src_bonus/check_arg_bonus	\
+		  src_bonus/window_bonus	\
+		  src_bonus/put_windows_bonus	\
+		  src_bonus/player_gps_bonus	\
+		  src_bonus/ft_split_bonus	\
+		  src_bonus/ft_itoa_bonus	\
+		  src_bonus/check_move_bonus	\
+		  src_bonus/check_map_bonus	\
+		  src_bonus/check_limits_bonus	\
+		  src_bonus/break_prog_bonus
 
 OBJ		= $(addsuffix .o, $(SRC))
 
-#OBJ_BONUS	= $(addsuffix .o, $(SRC_BONUS))
+OBJ_BONUS	= $(addsuffix .o, $(SRC_BONUS))
 
-#HEADERS		= /include/so_long.h
-HEADER		= -I include
+HEADER		= ./include/so_long.h
 
-#HEADERS_BONUS	= /include/checker.h
+HEADER_BONUS	= ./include/so_long_bonus.h
 
 ############################################################
 ## RULES
@@ -40,15 +52,15 @@ bonus: ${BONUS}
 ${NAME}: ${OBJ}
 	make -C minilibx
 	make -C printf
-	${CC} ${CFLAGS} ${OBJ} printf/printf.a minilibx/libmlx.a -lXext -lX11 -lm -lbsd -o ${NAME}
+	${CC} ${CFLAGS} ${OBJ} printf/printf.a minilibx/libmlx.a ${CCFLAGS} -o ${NAME}
 
 ${BONUS}: ${OBJ_BONUS}
 	make -C minilibx
 	make -C printf
-	${CC} ${CFLAGS} ${OBJ_BONUS} printf/printf.a minilibx/libmlx.a -lXext -lX11 -lm -lbsd -o ${BONUS}
+	${CC} ${CFLAGS} ${OBJ_BONUS} printf/printf.a minilibx/libmlx.a ${CCFLAGS} -o ${BONUS}
 
-%.o: %.c
-	${CC} ${CFLAGS} ${HEADER} -c $< -o $@
+%.o: %.c ${HEADER} ${HEADER_BONUS}
+	${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@
 
 clean:
 	make clean -C minilibx

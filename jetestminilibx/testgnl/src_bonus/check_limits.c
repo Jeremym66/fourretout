@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:55:25 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 20:30:40 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:49:38 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_mid(char *line, t_data *data)
 			data->collect++;
 		else if (line[i] == 'E')
 			data->exit++;
-		else if (line[i] == '0' || line[i] == '1')
+		else if (line[i] == '0' || line[i] == '1' || line[i] == 'A')
 			;
 		else
 			return (1);

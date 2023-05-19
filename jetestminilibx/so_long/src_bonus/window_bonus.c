@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   window_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 23:40:05 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/19 20:10:57 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/19 20:14:24 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	handle_keypress(int keysym, t_data *data)
 {
@@ -68,6 +68,8 @@ void	ft_complete_img(t_data *data)
 					ft_put_player(data);
 				if (data->map[data->y][data->x] == 'E')
 					ft_put_exit(data);
+				if (data->map[data->y][data->x] == 'A')
+					ft_put_ennemy(data);
 				data->x++;
 			}
 			data->y++;
@@ -113,6 +115,7 @@ void	ft_create_window(t_data *data)
 	mlx_loop_hook(data->mlx_ptr, &render, data);
 	ft_fill_floor(data);
 	ft_complete_img(data);
+	ft_move_display(data);
 	mlx_loop(data->mlx_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 }

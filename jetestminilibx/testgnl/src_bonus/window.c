@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 23:40:05 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/19 15:24:52 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/19 19:20:22 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	ft_create_window(t_data *data)
 	mlx_loop_hook(data->mlx_ptr, &render, data);
 	ft_fill_floor(data);
 	ft_complete_img(data);
+	ft_move_display(data);
 	mlx_loop(data->mlx_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_limits.c                                     :+:      :+:    :+:   */
+/*   check_limits_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:55:25 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/19 16:06:01 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/19 19:38:22 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	check_up(char *line, t_data *data)
 {
@@ -108,12 +108,6 @@ int	ft_check_limits(t_data *data)
 		return (1);
 	ft_path(data, data->pl_y, data->pl_x);
 	if (data->collect != data->check_collect || data->exit != data->check_exit)
-	{
-		ft_printf("data collect : %d\n", data->collect);
-		ft_printf("data check collect : %d\n", data->check_collect);
-		ft_printf("data exit : %d\n", data->exit);
-		ft_printf("data check exit : %d\n", data->check_exit);
 		return (1);
-	}
 	return (0);
 }
