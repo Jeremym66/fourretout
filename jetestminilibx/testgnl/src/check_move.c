@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:28:01 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/19 15:53:43 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/19 17:09:28 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ int	ft_check_move(t_data *data, char dest, int y, int x)
 		data->x = x;
 		data->y = y;
 		ft_put_ennemy(data);
+		sleep(2);
+		ft_printf("Game Over !!!");
+		ft_quit2(data);
 	}
-
 	return (1);
 }
 
