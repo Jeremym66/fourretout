@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 01:48:16 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/18 09:54:09 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/19 15:51:51 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,24 @@ void	ft_put_exit(t_data *data)
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->file,
 		PXL * data->x, PXL * data->y);
 	mlx_destroy_image(data->mlx_ptr, data->file);
+}
+
+void    ft_put_ennemy(t_data *data)
+{
+	if (data->alive == 1)
+	{
+	data->file = mlx_xpm_file_to_image(data->mlx_ptr, "../img/zelda_face.xpm",
+			&data->pxl, &data->pxl);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->file,
+		PXL * data->x, PXL * data->y);
+	mlx_destroy_image(data->mlx_ptr, data->file);
+	}
+	else
+	{
+	data->file = mlx_xpm_file_to_image(data->mlx_ptr, "../img/diamond.xpm",
+			&data->pxl, &data->pxl);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->file,
+		PXL * data->x, PXL * data->y);
+	mlx_destroy_image(data->mlx_ptr, data->file);
+	}
 }

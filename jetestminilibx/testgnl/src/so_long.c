@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:18:13 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 20:18:05 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:41:53 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_data(t_data *data)
 	data->exit_x = 0;
 	data->exit_y = 0;
 	data->exit_is_open = 0;
+	data->alive = 1;
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:06:32 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/18 09:18:49 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/19 15:56:53 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data {
 	void	*file;
 	char	**map;
 	char	**path;
+	int		alive;
 	int		pxl;
 	int		map_x;
 	int		map_y;
@@ -77,7 +78,7 @@ void	ft_move_down(t_data *data);
 void	ft_move_left(t_data *data);
 void	ft_move_right(t_data *data);
 //		check_move		//
-int		ft_check_move(t_data *data, char dest);
+int		ft_check_move(t_data *data, char dest, int y, int x);
 //		window			//
 void	ft_create_window(t_data *data);
 void	ft_fill_floor(t_data *data);
@@ -89,4 +90,5 @@ void	ft_put_limits(t_data *data);
 void	ft_put_collect(t_data *data);
 void	ft_put_player(t_data *data);
 void	ft_put_exit(t_data *data);
+void    ft_put_ennemy(t_data *data);
 #endif

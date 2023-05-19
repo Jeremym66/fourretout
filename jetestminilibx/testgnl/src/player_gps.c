@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:38:54 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 19:10:44 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:56:18 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	init_player(t_data *data)
 
 void	ft_move_up(t_data *data)
 {
-	if (ft_check_move(data, data->map[data->pl_y - 1][data->pl_x]) == 1)
+	if (ft_check_move(data, data->map[data->pl_y - 1][data->pl_x], data->pl_y - 1, data->pl_x) == 1)
 	{
 		data->map[data->pl_y][data->pl_x] = '0';
 		data->map[data->pl_y - 1][data->pl_x] = 'P';
@@ -59,7 +59,7 @@ void	ft_move_up(t_data *data)
 
 void	ft_move_down(t_data *data)
 {
-	if (ft_check_move(data, data->map[data->pl_y + 1][data->pl_x]) == 1)
+	if (ft_check_move(data, data->map[data->pl_y + 1][data->pl_x], data->pl_y + 1, data->pl_x) == 1)
 	{
 		data->map[data->pl_y][data->pl_x] = '0';
 		data->map[data->pl_y + 1][data->pl_x] = 'P';
@@ -81,7 +81,7 @@ void	ft_move_down(t_data *data)
 
 void	ft_move_left(t_data *data)
 {
-	if (ft_check_move(data, data->map[data->pl_y][data->pl_x - 1]) == 1)
+	if (ft_check_move(data, data->map[data->pl_y][data->pl_x - 1], data->pl_y, data->pl_x - 1) == 1)
 	{
 		data->map[data->pl_y][data->pl_x] = '0';
 		data->map[data->pl_y][data->pl_x - 1] = 'P';
@@ -103,7 +103,7 @@ void	ft_move_left(t_data *data)
 
 void	ft_move_right(t_data *data)
 {
-	if (ft_check_move(data, data->map[data->pl_y][data->pl_x + 1]) == 1)
+	if (ft_check_move(data, data->map[data->pl_y][data->pl_x + 1], data->pl_y, data->pl_x + 1) == 1)
 	{
 		data->map[data->pl_y][data->pl_x] = '0';
 		data->map[data->pl_y][data->pl_x + 1] = 'P';

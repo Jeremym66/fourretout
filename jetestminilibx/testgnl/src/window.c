@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 23:40:05 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/18 09:00:34 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:24:52 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	ft_complete_img(t_data *data)
 					ft_put_player(data);
 				if (data->map[data->y][data->x] == 'E')
 					ft_put_exit(data);
+				if (data->map[data->y][data->x] == 'A')
+					ft_put_ennemy(data);
 				data->x++;
 			}
 			data->y++;

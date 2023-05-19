@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:55:25 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/16 20:30:40 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:06:01 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_mid(char *line, t_data *data)
 			data->collect++;
 		else if (line[i] == 'E')
 			data->exit++;
-		else if (line[i] == '0' || line[i] == '1')
+		else if (line[i] == '0' || line[i] == '1' || line[i] == 'A')
 			;
 		else
 			return (1);
@@ -108,6 +108,12 @@ int	ft_check_limits(t_data *data)
 		return (1);
 	ft_path(data, data->pl_y, data->pl_x);
 	if (data->collect != data->check_collect || data->exit != data->check_exit)
+	{
+		ft_printf("data collect : %d\n", data->collect);
+		ft_printf("data check collect : %d\n", data->check_collect);
+		ft_printf("data exit : %d\n", data->exit);
+		ft_printf("data check exit : %d\n", data->check_exit);
 		return (1);
+	}
 	return (0);
 }
