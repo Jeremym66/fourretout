@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 01:48:16 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/19 16:56:54 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:20:07 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void    ft_put_ennemy(t_data *data)
 {
 	if (data->alive == 1)
 	{
-	data->file = mlx_xpm_file_to_image(data->mlx_ptr, "../img/zelda_face.xpm",
+	data->file = mlx_xpm_file_to_image(data->mlx_ptr, "../img/bomb.xpm",
 			&data->pxl, &data->pxl);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->file,
 		PXL * data->x, PXL * data->y);
@@ -68,7 +68,7 @@ void    ft_put_ennemy(t_data *data)
 	}
 	else
 	{
-	data->file = mlx_xpm_file_to_image(data->mlx_ptr, "../img/diamond.xpm",
+	data->file = mlx_xpm_file_to_image(data->mlx_ptr, "../img/boom.xpm",
 			&data->pxl, &data->pxl);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->file,
 		PXL * data->x, PXL * data->y);
