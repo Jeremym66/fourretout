@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 19:41:54 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/19 19:40:42 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:39:28 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	ft_free_map(t_data *data)
 		free(data->map[i]);
 	free(data->map);
 	i = -1;
-	while (data->path[++i])
-		free(data->path[i]);
-	free(data->path);
+	while (data->p[++i])
+		free(data->p[i]);
+	free(data->p);
 	ft_printf("Error!\nThe map haven't a good format.\n");
 	free(data);
 }
@@ -105,7 +105,7 @@ void	ft_check_map(char **argv, t_data *data)
 		exit (EXIT_FAILURE);
 	}	
 	data->map = ft_split(buffer, '\n');
-	data->path = ft_split(buffer, '\n');
+	data->p = ft_split(buffer, '\n');
 	free(buffer);
 	init_player(data);
 	if (ft_check_limits(data) == 1)

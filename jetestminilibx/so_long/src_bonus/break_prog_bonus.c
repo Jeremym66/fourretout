@@ -6,7 +6,7 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:37:41 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/05/19 19:38:05 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:37:20 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	ft_quit(t_data *data)
 		free(data->map[i]);
 	free(data->map);
 	i = -1;
-	while (data->path[++i])
-		free(data->path[i]);
-	free(data->path);
+	while (data->p[++i])
+		free(data->p[i]);
+	free(data->p);
 	free(data->mlx_ptr);
 	free(data);
 	exit (0);
@@ -40,9 +40,9 @@ int	ft_quit2(t_data *data)
 		free(data->map[i]);
 	free(data->map);
 	i = -1;
-	while (data->path[++i])
-		free(data->path[i]);
-	free(data->path);
+	while (data->p[++i])
+		free(data->p[i]);
+	free(data->p);
 	free(data->mlx_ptr);
 	free(data);
 	exit (0);

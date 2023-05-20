@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:06:32 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/18 09:18:49 by kaly             ###   ########.fr       */
+/*   Updated: 2023/05/20 17:49:54 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_data {
 	void	*win_ptr;
 	void	*file;
 	char	**map;
-	char	**path;
+	char	**p;
 	int		pxl;
 	int		map_x;
 	int		map_y;

@@ -6,7 +6,7 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 20:03:30 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/05/19 20:04:23 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:37:59 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_data {
 	void	*win_ptr;
 	void	*file;
 	char	**map;
-	char	**path;
+	char	**p;
 	int		alive;
 	int		pxl;
 	int		map_x;

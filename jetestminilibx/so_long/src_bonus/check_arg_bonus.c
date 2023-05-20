@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 16:04:51 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/19 19:40:24 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:35:39 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,37 +51,44 @@ void	ft_check_arg(int argc, char **argv)
 
 void	check_c_e(t_data *data, int y, int x)
 {
-	if (data->path[y][x] == 'C')
+	if (data->p[y][x] == 'C')
+	{
+		data->p[y][x] = 'X';
 		data->check_collect++;
-	if (data->path[y][x] == 'E')
+	}
+	if (data->p[y][x] == 'E')
+	{
 		data->check_exit++;
-	data->path[y][x] = 'X';
+		data->p[y][x] = '1';
+	}
+	if (data->p[y][x] == '0')
+		data->p[y][x] = 'X';
 }
 
-void	ft_path(t_data *data, int y, int x)
+void	ft_path(t_data *d, int y, int x)
 {
-	if (data->path[y - 1][x] == '0' || data->path[y - 1][x] == 'C'
-		|| data->path[y - 1][x] == 'E')
+	if (d->p[y - 1][x] == '0' || d->p[y - 1][x] == 'C' || d->p[y - 1][x] == 'E')
 	{
-		check_c_e(data, y - 1, x);
-		ft_path(data, y - 1, x);
+		check_c_e(d, y - 1, x);
+		if (d->p[y - 1][x] != '1')
+			ft_path(d, y - 1, x);
 	}
-	if (data->path[y + 1][x] == '0' || data->path[y + 1][x] == 'C'
-		|| data->path[y + 1][x] == 'E')
+	if (d->p[y + 1][x] == '0' || d->p[y + 1][x] == 'C' || d->p[y + 1][x] == 'E')
 	{
-		check_c_e(data, y + 1, x);
-		ft_path(data, y + 1, x);
+		check_c_e(d, y + 1, x);
+		if (d->p[y + 1][x] != '1')
+			ft_path(d, y + 1, x);
 	}
-	if (data->path[y][x - 1] == '0' || data->path[y][x - 1] == 'C'
-		|| data->path[y][x - 1] == 'E')
+	if (d->p[y][x - 1] == '0' || d->p[y][x - 1] == 'C' || d->p[y][x - 1] == 'E')
 	{
-		check_c_e(data, y, x - 1);
-		ft_path(data, y, x - 1);
+		check_c_e(d, y, x - 1);
+		if (d->p[y][x - 1] != '1')
+			ft_path(d, y, x - 1);
 	}
-	if (data->path[y][x + 1] == '0' || data->path[y][x + 1] == 'C'
-		|| data->path[y][x + 1] == 'E')
+	if (d->p[y][x + 1] == '0' || d->p[y][x + 1] == 'C' || d->p[y][x + 1] == 'E')
 	{
-		check_c_e(data, y, x + 1);
-		ft_path(data, y, x + 1);
+		check_c_e(d, y, x + 1);
+		if (d->p[y][x + 1] != '1')
+			ft_path(d, y, x + 1);
 	}
 }
