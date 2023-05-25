@@ -6,7 +6,7 @@
 /*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:38:54 by kaly              #+#    #+#             */
-/*   Updated: 2023/05/19 20:09:50 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:02:18 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_move_up(t_data *data)
 			PXL * data->pl_x, PXL * (data->pl_y - 1));
 		mlx_destroy_image(data->mlx_ptr, data->file);
 		data->pl_y--;
-		ft_printf("Zelda's moves : %d\n", data->pl_move);
+		ft_printf("Player's moves : %d\n", data->pl_move);
 	}
 }
 
@@ -75,7 +75,7 @@ void	ft_move_down(t_data *data)
 			PXL * data->pl_x, PXL * (data->pl_y + 1));
 		mlx_destroy_image(data->mlx_ptr, data->file);
 		data->pl_y++;
-		ft_printf("Zelda's moves : %d\n", data->pl_move);
+		ft_printf("Player's moves : %d\n", data->pl_move);
 	}
 }
 
@@ -97,7 +97,7 @@ void	ft_move_left(t_data *data)
 			PXL * (data->pl_x - 1), PXL * data->pl_y);
 		mlx_destroy_image(data->mlx_ptr, data->file);
 		data->pl_x--;
-		ft_printf("Zelda's moves : %d\n", data->pl_move);
+		ft_printf("Player's moves : %d\n", data->pl_move);
 	}
 }
 
@@ -119,6 +119,6 @@ void	ft_move_right(t_data *data)
 			PXL * (data->pl_x + 1), PXL * data->pl_y);
 		mlx_destroy_image(data->mlx_ptr, data->file);
 		data->pl_x++;
-		ft_printf("Zelda's moves : %d\n", data->pl_move);
+		ft_printf("Player's moves : %d\n", data->pl_move);
 	}
 }
