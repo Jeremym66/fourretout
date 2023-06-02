@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 15:45:37 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/06/02 15:50:53 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/06/02 14:54:47 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/06/02 16:25:50 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-typedef struct    s_list
-{
-    struct s_list *next;
-    void          *data;
-}                 t_list;
-
-int	ft_list_size(t_list *begin_list)
+char    *ft_strcpy(char *s1, char *s2)
 {
 	int	i;
-	t_list	*data;
 
-	i = 1;
-	data = begin_list;
-	while (data->next != NULL)
+	i = 0;
+	while (s2[i])
 	{
-		data = data->next;
+		s1[i] = s2[i];
 		i++;
 	}
-	return (i);
+	s1[i] = 0;
+	return (s1);
 }

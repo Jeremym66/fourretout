@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 15:45:37 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/06/02 15:50:53 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/06/02 16:34:02 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/06/02 16:43:26 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <unistd.h>
 
-typedef struct    s_list
+void	ft_putchar(char c)
 {
-    struct s_list *next;
-    void          *data;
-}                 t_list;
+	write(1, &c, 1);
+}
 
-int	ft_list_size(t_list *begin_list)
+void	first_word(char *str)
 {
 	int	i;
-	t_list	*data;
 
-	i = 1;
-	data = begin_list;
-	while (data->next != NULL)
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	while (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i])
 	{
-		data = data->next;
+		ft_putchar(str[i]);
 		i++;
 	}
-	return (i);
+}
+
+int	main(int ac, char **av)
+{
+	if (ac == 2)
+		first_word(av[1]);
+	ft_putchar('\n');
+	return (0);
 }

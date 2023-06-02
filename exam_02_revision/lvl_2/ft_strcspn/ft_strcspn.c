@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   ft_strcspn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 15:45:37 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/06/02 15:50:53 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/06/02 15:28:54 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/06/02 15:39:04 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
 
-typedef struct    s_list
-{
-    struct s_list *next;
-    void          *data;
-}                 t_list;
-
-int	ft_list_size(t_list *begin_list)
+size_t	ft_strcspn(const char *s, const char *reject)
 {
 	int	i;
-	t_list	*data;
+	int	j;
 
-	i = 1;
-	data = begin_list;
-	while (data->next != NULL)
+	i = 0;
+	while (s[i])
 	{
-		data = data->next;
+		j = 0;
+		while (reject[j])
+		{
+			if (s[i] == reject[j])
+				return (i);
+			j++;
+		}
 		i++;
 	}
 	return (i);

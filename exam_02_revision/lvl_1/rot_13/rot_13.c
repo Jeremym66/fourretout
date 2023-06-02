@@ -1,49 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fprime.c                                           :+:      :+:    :+:   */
+/*   rot_13.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 15:57:42 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/06/02 16:18:17 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/06/02 15:09:27 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/06/02 15:24:42 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
 
-void	fprime(int n)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_rot_13(char *str)
 {
 	int	i;
 
-	i = 2;
-	if (n <= 0)
-		return ;
-	if (n == 1)
+	i = 0;
+	while(str[i])
 	{
-		printf("1");
-		return ;
-	}
-	while (i < n)
-	{
-		if (n % i == 0)
-		{
-			n /= i;
-			printf("%d*", i);
-			i--;
-		}
+		if ((str[i] >= 'a' && str[i] <= 'm') || (str[i] >= 'A' && str[i] <= 'M'))
+			ft_putchar(str[i] + 13);
+		else if ((str[i] >= 'n' && str[i] <= 'z') || (str[i] >= 'N' && str[i] <= 'Z'))
+			ft_putchar(str[i] - 13);
+		else
+			ft_putchar(str[i]);
 		i++;
 	}
-	printf("%d", i);
-	
-
 }
 
 int	main(int ac, char **av)
 {
 	if (ac == 2)
-		fprime(atoi(av[1]));
-	printf("\n");
-	return (0);
+		ft_rot_13(av[1]);
+	ft_putchar('\n');
 }

@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 15:45:37 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/06/02 15:50:53 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/06/02 16:45:19 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/06/02 16:51:30 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-typedef struct    s_list
+int	is_power_of_2(unsigned int n)
 {
-    struct s_list *next;
-    void          *data;
-}                 t_list;
-
-int	ft_list_size(t_list *begin_list)
-{
-	int	i;
-	t_list	*data;
-
-	i = 1;
-	data = begin_list;
-	while (data->next != NULL)
-	{
-		data = data->next;
-		i++;
-	}
-	return (i);
+	if (n == 0)
+		return (0);
+	else if (n == 1 || n % 2 == 0)
+		return (1);
+	else
+		return (0);
 }
