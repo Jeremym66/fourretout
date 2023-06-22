@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 17:47:41 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/06/02 18:08:49 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/06/22 15:59:47 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/06/22 16:43:05 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
+#include <stdlib.h>
 
 void	ft_putchar(char c)
 {
@@ -21,30 +21,29 @@ void	ft_putchar(char c)
 void	rev_wstr(char *str)
 {
 	int	i;
-	int	j;
-	int	k;
-	
+	int	start;
+	int	end;
+	int	flag;
+
 	i = 0;
 	while (str[i])
 		i++;
-	i--;
 	while (i >= 0)
 	{
-//		printf("i = %d\n", i);
-//		printf("j = %d\n", j);
-//		printf("k = %d\n", k);
-		k = i;
-		while (str[i] != ' ' && i > -1)
+		while (str[i] == 0 || str[i] == ' ' || str[i] == '\t')
 			i--;
-		j = i + 1;
-		while (j <= k)
+		end = i;
+		while (str[i] && str[i] != ' ' && str[i] != '\t')
+			i--;
+		start = i + 1;
+		flag = start;
+		while (start <= end)
 		{
-			ft_putchar(str[j]);
-			j++;
+			ft_putchar(str[start]);
+			start++;
 		}
-		if (str[i] == ' ')
+		if (flag != 0)
 			ft_putchar(' ');
-		i--;
 	}
 }
 
@@ -52,6 +51,6 @@ int	main(int ac, char **av)
 {
 	if (ac == 2)
 		rev_wstr(av[1]);
-	ft_putchar('\n');
-	return (0);
+	ft_putchar ('\n');
+	return(0);
 }
