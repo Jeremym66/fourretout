@@ -80,17 +80,14 @@ void    ft_close(t_data *params)
 
 int ft_check_death(t_philo *philo)
 {
-    // printf("Philosophe %d\n", philo->philo_nb);
-    // printf("get %lld\n", (get_time() - philo->life_time) * 1000);
-    // printf("Philosophe %d\n", philo->philo_nb);
-    // printf("time to die %d\n", (philo->params->time_to_die + 2000));
-    if (((get_time() - philo->life_time) * 1000) >= (philo->params->time_to_die + 2000)) //marge 2ms
+    if (((get_time() - philo->life_time) * 1000) >= (philo->params->time_to_die + 10000)) //marge 2ms
     {
         pthread_mutex_lock(&philo->params->print_mutex);
         if (philo->params->is_dead == 0)
         {
-            printf("%s%lld ms : ", R, ((philo->life_time + philo->params->time_to_die - philo->params->start_time) / 1000));
-            printf("Philosophe %d is dead\n", philo->philo_nb);
+            printf("%s%lld ms : Philosophe %d is dead\n",
+                    R, refresh_time(philo->params) - 5, philo->philo_nb);
+           // printf("Philosophe %d is dead\n", philo->philo_nb);
             philo->params->is_dead = 1;
         }
         pthread_mutex_unlock(&philo->params->print_mutex);
@@ -104,17 +101,32 @@ int    ft_usleep(t_philo *philo, int time)
     long long   start;
 
     start = 0;
-    printf("time : %d\n", time);
-    printf("philo %d life time : %lld\n", philo->philo_nb, philo->life_time);
-    while(start < time)
+
+    if (philo->params->number_of_philosophers % 2 == 0)
     {
-        if (ft_check_death(philo) == 1)
-        {
-            ft_close(philo->params);
-            return (1);
-        }
-        start += 10000;
-        usleep(10000);
+        if(philo->params->time_to_die < philo->params->time_to_eat + philo->params->time_to_sleep)
+            while(start < time)
+            {
+                if (ft_check_death(philo) == 1)
+                    return (1);
+                start += 5000;
+                usleep(5000);
+            }
+        else
+            usleep(time);
+    }
+    else
+    {
+        if(philo->params->time_to_die < (philo->params->time_to_eat * 2) + philo->params->time_to_sleep)
+            while(start < time)
+            {
+                if (ft_check_death(philo) == 1)
+                    return (1);
+                start += 5000;
+                usleep(5000);
+            }
+        else
+            usleep(time);
     }
     return (0);
 }
@@ -128,21 +140,13 @@ void	*thread_routine(void *data)
     philo = (t_philo*)data;
     i = -1;
 
-
     if(philo->philo_nb == philo->params->number_of_philosophers)
             ft_swap(&philo->right_fork, &philo->left_fork);
-    pthread_mutex_lock(&philo->params->print_mutex);
-    printf("%s%lld ms : ", R, refresh_time(philo->params));
-    printf("Philosophe %d entre dans la boucle\n", philo->philo_nb);
-    pthread_mutex_unlock(&philo->params->print_mutex); 
     if (philo->pos % 2 != 0)
     {
         usleep(philo->params->time_to_eat);
         if (ft_check_death(philo) == 1 || philo->params->is_dead == 1)
-        {
-            printf("Philosophe %d returning\n", philo->philo_nb);
             return (NULL);
-        }
     }
     if (philo->params->number_of_philosophers % 2 != 0)
     {
@@ -150,10 +154,7 @@ void	*thread_routine(void *data)
         {
             usleep(philo->params->time_to_eat * 2);
             if (ft_check_death(philo) == 1 || philo->params->is_dead == 1)
-            {
-                printf("Philosophe %d returning\n", philo->philo_nb);
                 return (NULL);
-            }
         }
     }
     while (++i < philo->params->number_of_time_each_philosopher_must_eat && philo->params->is_dead != 1)   // Chaque philosophe mange 3 fois 
@@ -165,8 +166,7 @@ void	*thread_routine(void *data)
             mut = pthread_mutex_lock(&philo->params->fork[philo->left_fork]);
             if (mut == 0)
                 pthread_mutex_lock(&philo->params->fork[philo->right_fork]);
-            usleep(1000);
-            printf("test\n");
+            usleep(100);
         }
         pthread_mutex_lock(&philo->params->print_mutex);
         if (philo->params->is_dead != 1)
@@ -211,21 +211,8 @@ void	*thread_routine(void *data)
         }
         pthread_mutex_unlock(&philo->params->print_mutex);
 
-        // MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANGE //
-
-        // pthread_mutex_lock(&philo->params->print_mutex);
-        // printf("%s%lld ms : ", Y, refresh_time(philo->params));
-        // printf("Philosophe %d put down the fork nb : %d  🍴\n", philo->philo_nb, philo->right_fork);
-        // pthread_mutex_unlock(&philo->params->print_mutex);
-
         pthread_mutex_unlock(&philo->params->fork[philo->right_fork]);
         pthread_mutex_unlock(&philo->params->fork[philo->left_fork]);
-       
-        // pthread_mutex_lock(&philo->params->print_mutex);
-        // printf("%s%lld ms : ", Y, refresh_time(philo->params));
-        // printf("Philosophe %d put down the fork nb : %d  (left)\n", philo->philo_nb, philo->left_fork);
-        // pthread_mutex_unlock(&philo->params->print_mutex);
-
 
         pthread_mutex_lock(&philo->params->print_mutex);
         if (philo->params->is_dead != 1)
@@ -236,17 +223,12 @@ void	*thread_routine(void *data)
         pthread_mutex_unlock(&philo->params->print_mutex);
 
 
-
+        refresh_time(philo->params);
         if (ft_check_death(philo) == 1 || philo->params->is_dead == 1)
             return (NULL);
-        usleep(philo->params->time_to_sleep);
-        if (ft_check_death(philo) == 1 || philo->params->is_dead == 1)
+        if (ft_usleep(philo, philo->params->time_to_sleep) == 1)
             return (NULL);
 
-
-
-        // if((ft_usleep(philo, philo->params->time_to_sleep)) == 1)    // Temps pour digérer
-        //     exit(EXIT_SUCCESS);
         pthread_mutex_lock(&philo->params->print_mutex);
         if (philo->params->is_dead != 1)
         {
@@ -254,6 +236,12 @@ void	*thread_routine(void *data)
             printf("Philosophe %d is thinking...\n", philo->philo_nb);
         }
         pthread_mutex_unlock(&philo->params->print_mutex);
+
+        if (philo->params->number_of_philosophers % 2 != 0)
+        {
+            if (ft_usleep(philo, philo->params->time_to_eat) == 1)
+                return (NULL);
+        }
         if (ft_check_death(philo) == 1 || philo->params->is_dead == 1)
             return (NULL);
     }
