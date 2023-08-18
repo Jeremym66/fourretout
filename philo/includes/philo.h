@@ -45,9 +45,9 @@ typedef struct s_data
 	int			time_to_sleep;
 	int			number_of_time_each_philosopher_must_eat;
     long long        start_time;
+	int					is_dead;
 	pthread_mutex_t		fork[250];
 	pthread_mutex_t		print_mutex;
-	pthread_mutex_t		meal_check;
 	t_philo     philo[250];
 }				t_data;
 
