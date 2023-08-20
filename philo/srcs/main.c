@@ -249,13 +249,13 @@ int		main(int argc, char **argv)
     print_config_philo(params, argc);
     if (init_philos(params) == 0)
         return (EXIT_FAILURE);
-    // Initialisation des mutex pour les fourchettes
-    while (++i < params->nb_philo)
+   
+    while (++i < params->nb_philo)    // Init mutex pour les fourchettes
         pthread_mutex_init(&(params->fork[i]), NULL);
-    // Création des threads
-    i = -1;
+    i = -1;             // Création des threads
     while (++i < params->nb_philo)
-        pthread_create(&(params->philo[i].thread), NULL, thread_routine, &(params->philo[i]));
+        pthread_create(&(params->philo[i].thread), NULL, thread_routine,
+            &(params->philo[i]));
     ft_close(params);
     return (0);
 }
