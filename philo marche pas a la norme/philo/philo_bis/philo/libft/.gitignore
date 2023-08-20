@@ -1,0 +1,7 @@
+.DS_Store
+a.out
+*.o
+*.swp
+*.swo
+libft.a
+.vscode

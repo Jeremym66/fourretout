@@ -29,7 +29,9 @@ OBJ_SRCS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
 CFLAGS		= -Wall -Wextra -Werror
 
-CC			= gcc -fsanitize=thread -g
+CC			= gcc -g ##-fsanitize=thread
+##LIBFT		= libft
+##LFTA 		= ./libft/libft.a
 
 Y = "\033[33m"
 R = "\033[31m"
@@ -47,6 +49,7 @@ all: ${NAME}
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 ${NAME}: ${OBJ_SRCS}
+##	@echo $(G)Creating libft files$(X)
 	@$(CC) $(OBJ_SRCS) -pthread -o $(NAME)
 	@echo $(G)Project Philosophers by JMETEZEA successfully compiled${X}
 

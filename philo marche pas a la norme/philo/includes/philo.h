@@ -39,14 +39,13 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	int					number_of_philosophers;
-	int					time_to_die;
-	int					time_to_eat;
-	int					time_to_sleep;
-	int					number_of_time_each_philosopher_must_eat;
-    long long        	start_time;
+	int			number_of_philosophers;
+	int			time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
+	int			number_of_time_each_philosopher_must_eat;
+    long long        start_time;
 	int					is_dead;
-	pthread_mutex_t		mut_is_dead;
 	pthread_mutex_t		fork[250];
 	pthread_mutex_t		print_mutex;
 	t_philo     philo[250];
