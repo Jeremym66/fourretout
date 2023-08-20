@@ -39,7 +39,7 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	int					number_of_philosophers;
+	int					nb_philo;
 	int					time_to_die;
 	int					time_to_eat;
 	int					time_to_sleep;
@@ -54,7 +54,7 @@ typedef struct s_data
 
 //  main.c  //
 
-void    print_config_philo(t_data *params);
+void    print_config_philo(t_data *params, int argc);
 int     init_params(t_data *params, char **argv, int argc);
 int		init_philos(t_data *params);
 int		main(int argc, char **argv);
