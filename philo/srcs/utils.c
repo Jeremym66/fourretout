@@ -6,7 +6,7 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:52:36 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/08/12 14:52:41 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/08/28 19:42:22 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,31 @@ void	ft_swap(int *a, int *b)
 	temp = *a;
 	*a = *b;
 	*b = temp;
+}
+
+int	ft_usleep(t_philo *philo, int time)
+{
+	long long	start;
+	int			i;
+
+	start = 0;
+	i = 0;
+	if (((philo->params->nb_philo % 2 == 0)
+			&& (philo->params->time_to_die < philo->params->time_to_eat * 2))
+		|| ((philo->params->nb_philo % 2 != 0) && (philo->params->time_to_die
+				< (philo->params->time_to_eat * 2)
+				+ philo->params->time_to_sleep)))
+	{
+		while (start < time)
+		{
+			i = ft_check_death(philo);
+			if (i == 1)
+				return (1);
+			start += 5000;
+			usleep(5000);
+		}
+	}
+	else
+		usleep(time);
+	return (0);
 }

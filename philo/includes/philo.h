@@ -6,7 +6,7 @@
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:52:36 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/08/12 14:52:41 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/08/28 19:33:36 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,56 @@
 
 typedef struct s_philo
 {
-	pthread_t   thread;
-	int         pos;
-	int			philo_nb;
-    int			left_fork;
-	int			right_fork;
-	long long   life_time;
-	struct s_data     *params;
-}   t_philo;
+	struct s_data	*params;
+	long long		life_time;
+	pthread_t		thread;
+	int				pos;
+	int				philo_nb;
+	int				left_fork;
+	int				right_fork;
+}	t_philo;
 
 typedef struct s_data
 {
-	int					nb_philo;
-	int					time_to_die;
-	int					time_to_eat;
-	int					time_to_sleep;
-	int					number_of_time_each_philosopher_must_eat;
-    long long        	start_time;
-	int					is_dead;
-	pthread_mutex_t		mut_is_dead;
-	pthread_mutex_t		fork[250];
-	pthread_mutex_t		print_mutex;
-	t_philo     philo[250];
-}				t_data;
+	pthread_mutex_t	mut_is_dead;
+	pthread_mutex_t	fork[250];
+	pthread_mutex_t	print_mutex;
+	long long		start_time;
+	t_philo			philo[250];
+	int				nb_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				number_of_time_each_philosopher_must_eat;
+	int				is_dead;
+}	t_data;
 
 //  main.c  //
 
-void    print_config_philo(t_data *params, int argc);
-int     init_params(t_data *params, char **argv, int argc);
-int		init_philos(t_data *params);
-int		main(int argc, char **argv);
+int			ft_eat(t_philo *philo);
+int			ft_sleep(t_philo *philo);
+void		*thread_routine(void *data);
+int			main(int argc, char **argv);
+
+//  dead.c  //
+
+void		ft_close(t_data *params);
+int			ft_check_death(t_philo *philo);
+int			ft_is_dead(t_data *params);
+
+//  init.c  //
+
+void		print_config_philo(t_data *params, int argc);
+int			init_params(t_data *params, char **argv, int argc);
+int			init_philos(t_data *params);
+int			init_routine(t_philo *philo);
 
 //  utils.c //
 
 int			ft_atoi(const char *str);
 long long	refresh_time(t_data *data);
 long long	get_time(void);
-void	ft_swap(int *a, int *b);
+void		ft_swap(int *a, int *b);
+int			ft_usleep(t_philo *philo, int time);
 
 #endif

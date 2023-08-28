@@ -6,7 +6,7 @@
 #    By: sdestann <sdestann@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 14:21:35 by sdestann          #+#    #+#              #
-#    Updated: 2023/08/10 14:36:16 by sdestann         ###   ########.fr        #
+#    Updated: 2023/08/28 18:45:20 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ HEADER = $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
 SRCS_DIR = srcs/
 SRCS =	main.c		\
-		utils.c
+	utils.c		\
+	init.c		\
+	dead.c
 
 OBJDIR = objs
 
