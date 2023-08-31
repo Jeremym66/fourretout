@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.cpp                                           :+:      :+:    :+:   */
+/*   megaphone.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaly <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 19:48:14 by kaly              #+#    #+#             */
-/*   Updated: 2023/08/30 19:58:13 by kaly             ###   ########.fr       */
+/*   Created: 2023/08/31 16:00:19 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/08/31 16:43:04 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef MEGAPHONE_CLASS_H
+# define MEGAPHONE_CLASS_H
 
-int	main(void)
-{
-	std::cout << "shhhhh..." << std::endl;
+# include <iostream>
 
-	return (0);
-}
+class Megaphone {
+
+public:
+	char a;
+
+	Megaphone(void);
+	~Megaphone(void);
+
+	void	up(char);
+
+};
+
+#endif
