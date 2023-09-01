@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.class.cpp                                :+:      :+:    :+:   */
+/*   phonebook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 16:03:31 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/08/31 16:45:03 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/08/31 16:00:19 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/09/01 08:58:36 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "megaphone.class.hpp"
+#ifndef PHONEBOOK_CLASS_H
+# define PHONEBOOK_CLASS_H
 
-Megaphone::Megaphone(void) {
+# include "contact.class.hpp"
 
-	std::cout << "constructor" << std::endl;
-	return;
-}
+class phonebook {
 
-Megaphone::~Megaphone(void) {
-	
-	std::cout << "destructor" << std::endl;
-	return;
-}
+public:
 
-Megaphone::up(char c) {
+	contact contacts[8];
 
-	this.a = std::toupper(c);
-	std::cout << this.a;
-}
+	phonebook(void);
+	~phonebook(void);
+
+	void addcontact(contact newcontact);
+
+private:
+
+	int	_nb_contact;
+
+};
+
+#endif

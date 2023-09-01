@@ -6,13 +6,13 @@
 #    By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/31 15:54:20 by jmetezea          #+#    #+#              #
-#    Updated: 2023/08/31 16:59:55 by jmetezea         ###   ########.fr        #
+#    Updated: 2023/09/01 07:43:45 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = megaphone
 
-SRC = megaphone.cpp
+SRC = megaphone.cpp megaphone.class.cpp
 
 FLAG = -Wall -Werror -Wextra
 
