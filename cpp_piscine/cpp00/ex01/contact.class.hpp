@@ -20,10 +20,17 @@ class contact
 {
 public:
 
+	std::string first_name;
+	std::string last_name;
+	std::string nickname;
+	std::string phone_number;
+	std::string darkest_secret;
+	
 	contact(void);
 	~contact(void);
 
-	void	init(void);
+	void			init(void);
+	std::string		copyPrivateToPublic(std::string str, std::string str2); 
 
 private:
 

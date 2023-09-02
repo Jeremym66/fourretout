@@ -12,48 +12,71 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include "contact.class.hpp"
 
 contact::contact(void)
 {
-        std::cout << "constructor de contact" << std::endl << std::endl;
-        std::cout << "your phonebook is ready" << std::endl << std::endl;
-        std::cout << "if you want add a new contact enter : ADD" << std::endl;
-        std::cout << "show contact : SEARCH" << std::endl;
-        std::cout << "and if you want to exit : EXIT" << std::endl << std::endl;
         return;
 }
 
 contact::~contact(void)
 {
-        std::cout << "destructor de contact" << std::endl;
         return;
 }
  
 void	contact::init(void)
 {
+        long unsigned int     i;
+
 	std::cout << "First name : ";
-	std::getline (std::cin, this->_first_name);
-	std::cout << "the first name : [" << this->_first_name << "]" << std::endl;
+	std::getline (std::cin, _first_name);
+        first_name = copyPrivateToPublic(_first_name, first_name);
         
         std::cout << "Last name : ";
-	std::getline (std::cin, this->_last_name);
-	std::cout << "Last name : [" << this->_last_name << "]" << std::endl;
+	std::getline (std::cin, _last_name);
+        last_name = copyPrivateToPublic(_last_name, last_name);
         
         std::cout << "Nickname : ";
-	std::getline (std::cin, this->_nickname);
-	std::cout << "Nickname : [" << this->_nickname << "]" << std::endl;
+	std::getline (std::cin, _nickname);
+        nickname = copyPrivateToPublic(_nickname, nickname);
         
         std::cout << "Phone number : ";
-	std::getline (std::cin, this->_phone_number);
-	std::cout << "Phone number : [" << this->_phone_number << "]" << std::endl;
+	std::getline (std::cin, _phone_number);
+        phone_number = copyPrivateToPublic(_phone_number, phone_number);
 
         std::cout << "Darkest secret : ";
-	std::getline (std::cin, this->_darkest_secret);
-	std::cout << "Darkest secret : [" << this->_darkest_secret << "]" << std::endl;
-
-        std::cout << "The contact is created" << std::endl << std::endl;
+	std::getline (std::cin, _darkest_secret);
+        darkest_secret = copyPrivateToPublic(_darkest_secret, darkest_secret);
 
 	return;
 }
 
+std::string    contact::copyPrivateToPublic(std::string str, std::string str2) 
+{
+        int     i;
+        int     i2;
+
+        i = 0;
+        i2 = 0;
+        str2 = "          ";
+        if (str.length() < 10)
+        {
+                i2 = 10 - str.length();
+                while (i2 < 10)
+                        str2[i2++] = str[i++];
+        }
+        else
+        {
+                while (i < 9)
+                {
+                        str2[i] = str[i]; 
+                        i++;
+                }
+                if (str.length() == 10)
+                        str2[i] = str[i];
+                else
+                        str2[i] = '.';
+        }
+        return (str2);
+}

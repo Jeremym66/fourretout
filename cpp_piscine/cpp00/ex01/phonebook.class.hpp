@@ -15,20 +15,22 @@
 
 # include "contact.class.hpp"
 
+class contact;
+
 class phonebook {
 
 public:
 
-	contact contacts[8];
+	contact *contacts[8];
+	int	nb_contact;
+	int	idx;
 
 	phonebook(void);
 	~phonebook(void);
 
-	void addcontact(contact newcontact);
-
-private:
-
-	int	_nb_contact;
+	void addcontact(contact *newcontact);
+	void showcontacts();
+	void showonecontact();
 
 };
 

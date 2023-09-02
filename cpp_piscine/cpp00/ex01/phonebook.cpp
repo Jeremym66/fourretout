@@ -17,7 +17,7 @@
 
 int	main(int ac, char **av)
 {
-	phonebook phonebook;
+	phonebook myphonebook;
 	contact newcontact;
 	std::string	command;
 
@@ -25,15 +25,19 @@ int	main(int ac, char **av)
 	{
 		std::cout << "Command ? : ";
 		std::getline (std::cin, command);
-
 		if (command == "EXIT" || command == "exit")
 			break;
-		if (command == "ADD" || command == "add")
+		else if (command == "ADD" || command == "add")
 		{
 			std::cout << std::endl;
 			newcontact.init();
-			phonebook.addcontact(newcontact);
+			myphonebook.addcontact(&newcontact);
 		}
+		else if (command == "LIST" || command == "list")
+			myphonebook.showcontacts();
+		else if (command == "SEARCH" || command == "search")
+			myphonebook.showonecontact();
+		std::cout << std::endl;
 	}
 	return 0;
 }
