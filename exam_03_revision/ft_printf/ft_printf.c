@@ -20,16 +20,16 @@ int	ft_printchar(char c)
 	return (1);
 }
 
-void	ft_printstr(char * args, int *count)
+void	ft_printstr(char * str, int *count)
 {
 	int	i;
 
 	i = 0;
-	if (!args)
-		args = "(null)";
-	while (args[i])
+	if (!str)
+		str = "(null)";
+	while (str[i])
 	{
-		*count += ft_printchar(args[i]);
+		*count += ft_printchar(str[i]);
 		i++;
 	}
 }
@@ -76,7 +76,7 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return(count);
 }
-/*
+
 int	main()
 {
 	int	count;
@@ -94,4 +94,4 @@ int	main()
 	printf("count ft_printf = %d\n", count);
 	count = printf("Hexadecimal for %d is %x\n", 42, 886);
 	printf("count printf = %d\n", count);
-}*/
+}
