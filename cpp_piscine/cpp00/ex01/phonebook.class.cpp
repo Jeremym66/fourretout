@@ -81,7 +81,7 @@ void phonebook::showonecontact()
 			else
 			{
 				std::cin.ignore(1000, '\n');
-				break; // Sortez de la boucle si l'entrée est valide
+				break;
 			}
 		}
 
