@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 		{
 			std::cout << std::endl;
 			newcontact.init();
-			myphonebook.addcontact(newcontact);
+			myphonebook.addcontact(&newcontact);
 		}
 		else if (command == "LIST" || command == "list")
 			myphonebook.showcontacts();

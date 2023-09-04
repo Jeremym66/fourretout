@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.class.hpp                                :+:      :+:    :+:   */
+/*   contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_CLASS_H
-# define PHONEBOOK_CLASS_H
+#ifndef CONTACT_CLASS_H
+# define CONTACT_CLASS_H
 
-# include "contact.class.hpp"
+// #include <iostream>
+// #include <string>
 
-class contact;
-
-class phonebook {
-
+class contact
+{
 public:
 
-	contact contacts[8];
-	int	nb_contact;
-	int	idx;
+	std::string first_name;
+	std::string last_name;
+	std::string nickname;
+	std::string phone_number;
+	std::string darkest_secret;
+	
+	contact(void);
+	~contact(void);
 
-	phonebook(void);
-	~phonebook(void);
+	void			init(void);
+	std::string		copyPrivateToPublic(std::string str, std::string str2); 
 
-	void addcontact(const contact &newcontact);
-	void showcontacts();
-	void showonecontact();
+private:
 
+	std::string _first_name;
+	std::string _last_name;
+	std::string _nickname;
+	std::string _phone_number;
+	std::string _darkest_secret;
 };
 
 #endif

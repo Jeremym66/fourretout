@@ -24,20 +24,20 @@ phonebook::phonebook() : nb_contact(0), idx(0)
 
 phonebook::~phonebook(void)
 {	
-	// if (nb_contact > 7)
-	// 	nb_contact = 7;
-    // for (int i = 0; i <= nb_contact; i++)
-    // {
-    //     delete contacts[i];
-    // }
+	if (nb_contact > 7)
+		nb_contact = 7;
+    for (int i = 0; i <= nb_contact; i++)
+    {
+        delete contacts[i];
+    }
 	return;
 }
 
-void phonebook::addcontact(const contact &newcontact)
+void phonebook::addcontact(contact *newcontact)
 {
-	// if (nb_contact > 7)
-	// 	delete contacts[nb_contact % 8];
-    contacts[nb_contact % 8] = newcontact;
+	if (nb_contact > 7)
+		delete contacts[nb_contact % 8];
+    contacts[nb_contact % 8] = new contact(*newcontact);
 	nb_contact++;
     std::cout << "Contact added to directory." << std::endl;
 }
@@ -52,10 +52,10 @@ void phonebook::showcontacts()
 		std::cout << "----------------------------------------------" << std::endl;
 		while (++idx < 9 && idx - 1 < nb_contact)
 		{
-			std::cout << "| " << contacts[idx - 1].first_name << "|";
-			std::cout << contacts[idx - 1].last_name << "|";
-			std::cout << contacts[idx - 1].nickname << "|";
-			std::cout << contacts[idx - 1].phone_number << "|" << std::endl;
+			std::cout << "| " << contacts[idx - 1]->first_name << "|";
+			std::cout << contacts[idx - 1]->last_name << "|";
+			std::cout << contacts[idx - 1]->nickname << "|";
+			std::cout << contacts[idx - 1]->phone_number << "|" << std::endl;
 		}
 		std::cout << "----------------------------------------------" << std::endl;
 		idx = 0;
@@ -90,10 +90,10 @@ void phonebook::showonecontact()
 		else
 		{
 			std::cout << std::endl << "----------------------------------------------" << std::endl;
-			std::cout << "| " << contacts[idx - 1].first_name << "|";
-			std::cout << contacts[idx - 1].last_name << "|";
-			std::cout << contacts[idx - 1].nickname << "|";
-			std::cout << contacts[idx - 1].phone_number << "|" << std::endl;
+			std::cout << "| " << contacts[idx - 1]->first_name << "|";
+			std::cout << contacts[idx - 1]->last_name << "|";
+			std::cout << contacts[idx - 1]->nickname << "|";
+			std::cout << contacts[idx - 1]->phone_number << "|" << std::endl;
 			std::cout << "----------------------------------------------" << std::endl;
 		}
 		idx = 0;
