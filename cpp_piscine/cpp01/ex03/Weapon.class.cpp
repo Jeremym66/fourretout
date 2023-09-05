@@ -19,15 +19,17 @@ Weapon::Weapon(std::string type) : _type(type)
 
 Weapon::~Weapon()
 {
-    std::cout << "destructor Weapon" << std::endl;
+    std::cout << "destructor Weapon " << this->_type << std::endl;
 }
 
-const std::string&    Weapon::getType()
+const std::string&    Weapon::getType() const
 {
-    return this->type;
+    return this->_type;
 }
 
 void	Weapon::setType(std::string type)
 {
+    std::cout << this->_type << " now is a \"";
 	this->_type = type;
+    std::cout << this->_type << "\"" << std::endl << std::endl;
 }

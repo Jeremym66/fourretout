@@ -16,8 +16,28 @@
 
 int main()
 {
-    HumanA  Rick("revolver");
-    // HumanB  Daryl;
+    Weapon  Revolver("Revolver");
+    Weapon  Crossbow("Crossbow");
+    Weapon  Knife("Knife");
 
+    HumanA  Rick(Revolver, "Rick");
+    Rick.Attack();
+    Revolver.setType("Gold Revolver");
+    Rick.Attack();
+
+    
+    HumanB  Daryl("Daryl");
+    Daryl.Attack();
+
+    Daryl.setWeapon(Crossbow);
+    Daryl.Attack();
+    Crossbow.setType("Gold Crossbow");
+    Daryl.Attack();
+
+    Daryl.setWeapon(Knife);
+    Daryl.Attack();
+    Knife.setType("Gold knife");
+    Daryl.Attack();
+    
     return (0);
 }

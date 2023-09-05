@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "HumanA.class.hpp"
+#include "Weapon.class.hpp"
 
-HumanA::HumanA(std::string myWeapon)
+HumanA::HumanA(Weapon &myWeapon, std::string name) : _myWeapon(myWeapon), _name(name)
 {
-    std::cout << "constructor HumanA" << std::endl;
-    std::cout << "my weapon is : " << myWeapon << std::endl;
-    // std::cout << "my weapon is : " << Weapon.getType() << std::endl;
+    std::cout << "constructor HumanA His name is " << _name << std::endl;
+    std::cout << this->_name;
+    std::cout << ": My weapon is a " << myWeapon.getType() << std::endl << std::endl;
 }
 
 HumanA::~HumanA()
@@ -24,6 +25,8 @@ HumanA::~HumanA()
     std::cout << "destructor HumanA" << std::endl;
 }
 
-
-
-
+void    HumanA::Attack()
+{
+    std::cout << "!!! Warning !!! ------------  ";
+    std::cout << this->_name << " attacks with his " << _myWeapon.Weapon::getType() << std::endl << std::endl;
+}

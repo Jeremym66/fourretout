@@ -24,11 +24,11 @@ private:
 
 public:
 
-    Weapon(/* args */);
+    Weapon(std::string type);
     ~Weapon();
 
-    const std::string&    getType();
-    void	Weapon::setType(std::string type)
+    const std::string&    getType() const;
+    void	setType(std::string type);
 
 };
 
