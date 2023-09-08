@@ -14,7 +14,7 @@
 #include "HumanA.class.hpp"
 #include "HumanB.class.hpp"
 
-int main()
+/*int main()
 {
     Weapon  Revolver("Revolver");
     Weapon  Crossbow("Crossbow");
@@ -40,4 +40,24 @@ int main()
     Daryl.Attack();
     
     return (0);
+}*/
+
+int main()
+{
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanA bob(club, "bob");
+        bob.Attack();
+        club.setType("some other type of club");
+        bob.Attack();
+    }
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanB jim("Jim");
+        jim.setWeapon(club);
+        jim.Attack();
+        club.setType("some other type of club");
+        jim.Attack();
+    }
+return 0;
 }
