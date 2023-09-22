@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:06:32 by kaly              #+#    #+#             */
-/*   Updated: 2023/09/16 19:06:08 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/09/22 13:41:15 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@
 # include "../libmlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <math.h>
 
 # define MLX_ERROR 1
 
-# define PXL 50
+# define PXL 100
+# define M_PI 3.14159265358979323846
 
 # define WINDOW_H 1080
 # define WINDOW_W 1920
@@ -56,9 +58,32 @@ typedef struct s_data {
 
 	int		player_x;
 	int		player_y;
-	int		player_orient;
+	double		player_orient;
+	double	beta;
+	double	rad_beta;
+	
 	int		x;
 	int		y;
+
+	double		ya;
+	double		xa;
+	double		anglerad;
+	double		anglerad90;
+	double		delta_x;
+	double		delta_y;
+
+	double		first_x;
+	double		first_y;
+
+	double		check_x;
+	double		check_y;
+
+	double		dist_x;
+	double		dist_y;
+	
+	double		dist;
+	double		orient;
+	
 
 	int		exit;
 

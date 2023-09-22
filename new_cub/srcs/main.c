@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:18:13 by kaly              #+#    #+#             */
-/*   Updated: 2023/09/16 18:57:14 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:12:53 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ void	init_data(t_data *data)
 	s = get_map_color("42\0", 5, data);
 	data->color_map_hex_C = ft_htoi(s);
 	free(s);
+	data->ya = 0.00;
+	data->xa = 0.00;
+	data->anglerad = 0.00;
+	data->anglerad90 = 90 * (M_PI / 180.00);
+	data->first_x = 0.00;
+	data->check_x = 0.00;
+	data->dist_x = 0.00;
+	data->first_y = 0.00;
+	data->check_y = 0.00;
+	data->dist_y = 0.00;
+	data->dist = 0.00;
+	data->orient = 0.00;
+	data->beta = 30.00;
 }
 
 int	main(int argc, char **argv)
@@ -43,3 +56,4 @@ int	main(int argc, char **argv)
 	// ft_quit(data);
 	return (0);
 }
+

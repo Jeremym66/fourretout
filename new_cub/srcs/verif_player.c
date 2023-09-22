@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 11:50:21 by sdestann          #+#    #+#             */
-/*   Updated: 2023/09/16 19:35:17 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:00:23 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ void	player_coordonate(t_data *data)
 			if (data->map[i][j] == 'E' || data->map[i][j] == 'N' || data->map[i][j] == 'S'
 				|| data->map[i][j] == 'W')
 			{
-				data->player_x = i * 100 + 50;
-				data->player_y = j * 100 + 50;
+				data->player_x = i * PXL + 50;
+				data->player_y = j * PXL + 50;
 				if (data->map[i][j] == 'E')
-					data->player_orient = 0;
+					data->player_orient = 0.01;
 				else if (data->map[i][j] == 'N')
-					data->player_orient = 90;
+					data->player_orient = 90.01;
 				else if (data->map[i][j] == 'W')
-					data->player_orient = 180;
+					data->player_orient = 180.01;
 				else
-					data->player_orient = 270;
+					data->player_orient = -90.01;
 				ft_printf("player x : %d\n", data->player_x);
 				ft_printf("player y : %d\n", data->player_y);
 				return ;
