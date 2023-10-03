@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.class.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 07:28:20 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/09/05 07:28:24 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/03 08:59:35 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Weapon::~Weapon()
     std::cout << "destructor Weapon " << this->_type << std::endl;
 }
 
-const std::string&    Weapon::getType() const
+const std::string    &Weapon::getType() const
 {
     return this->_type;
 }

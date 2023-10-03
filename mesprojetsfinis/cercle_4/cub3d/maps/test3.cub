@@ -1,0 +1,12 @@
+NO ./img/black_window.xpm
+SO ./img/house_open.xpm
+WE ./img/test.xpm
+EA ./img/bomb.xpm
+F 163,121,6
+C 0,246,255
+111   111
+101111101
+100000001
+110000011
+ 100N001
+ 1111111
