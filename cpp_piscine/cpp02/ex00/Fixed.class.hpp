@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                   :+:      :+:    :+:   */
+/*   Fixed.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmetezea <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:07:55 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/09/01 09:00:53 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/04 02:53:06 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.class.hpp"
+#pragma once
 
-void    randomChump(std::string name)
-{
-    Zombie newzombie(name);
-    
-    newzombie.announce();
-    return;
-}
+#include <iostream>
+#include <string>
+
+class Fixed {
+
+public :
+
+        Fixed(void);
+        ~Fixed(void);
+        Fixed(Fixed const & src);
+        Fixed & operator=(Fixed const & rhs);
+
+        void setRawBits(int const raw);
+        int getRawBits(void) const;
+        
+
+private :
+
+        int _val;
+        static const int _bit = 8;
+};

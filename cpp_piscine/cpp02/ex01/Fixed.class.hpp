@@ -1,20 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Fixed.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:07:55 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/03 07:27:55 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/04 03:47:49 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.class.hpp"
+#pragma once
 
-Zombie* newZombie( std::string name )
-{
-    Zombie *new_zombie = new Zombie(name);
-    
-    return (new_zombie);
-}
+#include <iostream>
+#include <cmath> 
+
+class Fixed {
+public :
+
+        Fixed(void);
+        Fixed(Fixed const & src);
+        Fixed(int const i);
+        Fixed(float const i);
+
+        ~Fixed();
+
+        Fixed & operator=(Fixed const & rhs);
+
+        int getRawBits(void) const;
+        void setRawBits(int const raw);
+
+        float toFloat(void) const;
+        int toInt(void) const;
+
+private :
+
+        int   _val;
+        static const int _bit = 8;
+};
+
+std::ostream & operator<<( std::ostream & o, Fixed const & i );
