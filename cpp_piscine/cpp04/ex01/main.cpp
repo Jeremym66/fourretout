@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 07:29:09 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/18 08:31:48 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:30:06 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "dog.class.hpp"
 #include "wronganimal.class.hpp"
 #include "wrongcat.class.hpp"
+#include "brain.class.hpp"
 
 int main()
 {
@@ -27,17 +28,10 @@ int main()
     j->makeSound();
     meta->makeSound();
 
-    const WrongAnimal* wrongmeta = new WrongAnimal();
-    const WrongAnimal* wrongi = new WrongCat();
-
-    std::cout << wrongi->getType() << " " << std::endl;
-    wrongi->makeSound();
-    wrongmeta->makeSound();
+    i->_brain->getIdeas();
 
     delete (meta);
     delete (i);
     delete (j);
-    delete (wrongmeta);
-    delete (wrongi);
     return (0);
 }
