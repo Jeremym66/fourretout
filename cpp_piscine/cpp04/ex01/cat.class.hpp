@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 07:38:29 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/18 16:29:21 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:11:15 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Cat : public Animal
         Cat & operator=(Cat const & rhs);
 
         virtual void    makeSound(void) const;
-        // Brain *getBrain(void) const;
+        virtual Brain *getBrain(void) const;
 
     private :
 

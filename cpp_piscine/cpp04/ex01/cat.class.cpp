@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 07:38:26 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/18 16:29:25 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:18:27 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void    Cat::makeSound(void) const
     std::cout << "MIAaaaouuuOOOUUUUU " << std::endl;
 }
 
-// Brain *Cat::getBrain(void) const
-// {
-//     std::cout << this->_Brain->getIdeas << std::endl;
-//     return (this->_Brain);
-// }
+Brain *Cat::getBrain(void) const
+{
+    // std::cout << this->_Brain->getIdeas << std::endl;
+    return (this->_Brain);
+}

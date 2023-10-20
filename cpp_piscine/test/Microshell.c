@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:30:56 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/18 16:31:33 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:23:22 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int exec(char **argv, char **envp, int i)
     waitpid(pid, &status, 0);
     if (has_pipe && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
         return err("error: fatal\n");
-    return WIFEXITED(status) && WEXITSTATUS(status);
+    return (WIFEXITED(status) && WEXITSTATUS(status));
 }
 
 int main(int argc, char **argv, char **envp) 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   training.c                                         :+:      :+:    :+:   */
+/*   training3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 16:44:10 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/19 10:22:11 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/10/19 08:11:14 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/10/19 08:30:51 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,27 @@ int cd(char **argv, int i)
     return 0;
 }
 
-int exec(char **argv, char **envp, int i)
+int exec (char **argv, char **envp, int i)
 {
     int fd[2];
     int status;
-    int has_pipe = argv[i] && !strcmp((argv[i]), "|");
+    int has_pipe = argv[i] && !strcmp(argv[i], "|");
 
-    if (has_pipe && pipe(fd) == -1)
-        return err("error: fatal\n");
+    if (has_pipe && (pipe(fd) == -1))
+        return (err("error: fatal\n"));
     int pid = fork();
     if (!pid)
     {
         argv[i] = 0;
-        if (has_pipe && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1 || close(fd[0]) == -1))
+        if (has_pipe && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
             return (err("error: fatal\n"));
         execve(*argv, argv, envp);
-        return (err("error: cannot execute "), err(*argv), err("\n")); 
+        return (err("error: cannot execute "), err(*argv), err("/n"));
     }
     waitpid(pid, &status, 0);
-    if (has_pipe && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1 || close(fd[0]) == -1))
-        return err("error: fatal\n");
-    return (WIFEXTIED(status) && WEXITSTATUS(status));
+    if (has_pipe && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
+        return (err("error: fatal\n"));
+    return (WIFEXITED(status) && WEXITSTATUS(status));
 }
 
 int main(int argc, char **argv, char **envp)
@@ -60,7 +60,7 @@ int main(int argc, char **argv, char **envp)
 
     if (argc > 1)
     {
-        while(argv[i] && argv[++i])
+        while (argv[i] && argv[++i])
         {
             argv += i;
             i = 0;
@@ -69,7 +69,7 @@ int main(int argc, char **argv, char **envp)
             if (!strcmp(*argv, "cd"))
                 status = cd(argv, i);
             else if (i)
-                status = exec(argv, envp, i);
+                status = exec(argv, envp , i);
         }
     }
     return (status);
