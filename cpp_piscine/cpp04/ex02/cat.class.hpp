@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 07:38:29 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/24 12:05:54 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:35:56 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "animal.class.hpp"
 #include "brain.class.hpp"
 
-class Cat : public Animal
+class Cat : public AAnimal
 {
     public :
 

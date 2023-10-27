@@ -1,47 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.class.cpp                                      :+:      :+:    :+:   */
+/*   cat.class.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 08:08:25 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/24 12:12:51 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/10/18 07:38:26 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/10/24 13:35:51 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dog.class.hpp"
+#include "cat.class.hpp"
 
-Dog::Dog(void) : Animal("Dog")
+Cat::Cat(void) : AAnimal("Cat")
 {
-    this->_type = "Dog";
+    this->_type = "Cat";
     this->_Mybrain = new Brain();
     int randomIndex = std::rand() % 100;
     this->MyIdea = this->_Mybrain->ideas[randomIndex];
-    std::cout << "constructor Dog" << std::endl;
+    std::cout << "constructor Cat" << std::endl;
 }
 
-Dog::~Dog(void)
+Cat::~Cat(void)
 {
     delete this->_Mybrain;
-    std::cout << "destructor Dog" << std::endl;
+    std::cout << "destructor Cat" << std::endl;
 }
 
-Dog::Dog(Dog const & a)
+Cat::Cat(Cat const & a)
 {
-    std::cout << "constructor copy Dog" << std::endl;
+    std::cout << "constructor copy Cat" << std::endl;
     *this = a;
 }
 
-Dog & Dog::operator=(Dog const & rhs)
+Cat & Cat::operator=(Cat const & rhs)
 {
     if (this != &rhs)
+    {
         this->_type = rhs.getType();
+        this->_Mybrain = new Brain();
+    }
     return (*this);
 }
-
-void    Dog::makeSound(void) const
+void    Cat::makeSound(void) const
 {
-    std::cout << "Waff Waff WAFFFFFFFFF ouhaf" << std::endl;
+    std::cout << "MIAaaaouuuOOOUUUUU " << std::endl;
     std::cout << MyIdea << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 08:09:03 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/18 08:11:37 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:44:01 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ class Dog : public Animal
         Dog(Dog const & a);
         Dog & operator=(Dog const & rhs);
 
-        virtual void    makeSound(void) const;
+        void    makeSound(void) const;
 
 };

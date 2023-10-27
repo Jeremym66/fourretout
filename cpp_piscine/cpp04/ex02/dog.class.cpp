@@ -6,13 +6,13 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 08:08:25 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/24 12:12:51 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:35:54 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dog.class.hpp"
 
-Dog::Dog(void) : Animal("Dog")
+Dog::Dog(void) : AAnimal("Dog")
 {
     this->_type = "Dog";
     this->_Mybrain = new Brain();

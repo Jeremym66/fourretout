@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 07:19:16 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/18 08:11:53 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:39:59 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Animal
 
         Animal(void);
         Animal(std::string type);
-        ~Animal(void);
+        virtual ~Animal(void);
         Animal(Animal const & a);
         Animal & operator=(Animal const & rhs);
 

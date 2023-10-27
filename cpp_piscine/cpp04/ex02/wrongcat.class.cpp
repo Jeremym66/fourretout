@@ -1,49 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat.class.cpp                                      :+:      :+:    :+:   */
+/*   WrongCat.class.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 07:38:26 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/24 12:14:01 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/18 08:11:47 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cat.class.hpp"
+#include "wrongcat.class.hpp"
 
-Cat::Cat(void) : Animal("Cat")
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 {
-    this->_type = "Cat";
-    this->_Mybrain = new Brain();
-    int randomIndex = std::rand() % 100;
-    this->MyIdea = this->_Mybrain->ideas[randomIndex];
-    std::cout << "constructor Cat" << std::endl;
+    this->_type = "WrongCat";
+    std::cout << "constructor WrongCat" << std::endl;
 }
 
-Cat::~Cat(void)
+WrongCat::~WrongCat(void)
 {
-    delete this->_Mybrain;
-    std::cout << "destructor Cat" << std::endl;
+    std::cout << "destructor WrongCat" << std::endl;
 }
 
-Cat::Cat(Cat const & a)
+WrongCat::WrongCat(WrongCat const & a)
 {
-    std::cout << "constructor copy Cat" << std::endl;
+    std::cout << "constructor copy WrongCat" << std::endl;
     *this = a;
 }
 
-Cat & Cat::operator=(Cat const & rhs)
+WrongCat & WrongCat::operator=(WrongCat const & rhs)
 {
     if (this != &rhs)
-    {
         this->_type = rhs.getType();
-        this->_Mybrain = new Brain();
-    }
     return (*this);
 }
-void    Cat::makeSound(void) const
+
+void    WrongCat::makeSound(void) const
 {
     std::cout << "MIAaaaouuuOOOUUUUU " << std::endl;
-    std::cout << MyIdea << std::endl;
 }

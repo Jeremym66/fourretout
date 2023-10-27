@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat.class.hpp                                      :+:      :+:    :+:   */
+/*   WrongCat.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 07:38:29 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/24 12:05:54 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/18 08:11:43 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 #include <string>
 #include <iostream>
-#include "animal.class.hpp"
-#include "brain.class.hpp"
+#include "wronganimal.class.hpp"
 
-class Cat : public Animal
+class WrongCat : public WrongAnimal
 {
     public :
 
-        Cat(void);
-        ~Cat(void);
-        Cat(Cat const & a);
-        Cat & operator=(Cat const & rhs);
+        WrongCat(void);
+        ~WrongCat(void);
+        WrongCat(WrongCat const & a);
+        WrongCat & operator=(WrongCat const & rhs);
 
         void    makeSound(void) const;
-
-        std::string MyIdea;
-        
-    private :
-
-        Brain   *_Mybrain;
 
 };

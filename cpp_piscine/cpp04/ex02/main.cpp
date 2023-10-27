@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 07:29:09 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/24 12:11:36 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:41:19 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 
 int main()
 {
-    int i = 0;
-    const Animal* meta[10];
 
-    while (i < 5)
-        meta[i++] = new Cat();
-    while (i < 10)
-        meta[i++] = new Dog();
-    i = 0;
-    while (i < 10)
-        meta[i++]->makeSound();
-    i = 0;
-    while (i < 10)
-        delete (meta[i++]);
+    const AAnimal *i = new Cat();
+    i->makeSound();
+
+
+    // pour tester quon ne puisses pas instancier un AAnimal il faut decommenter
+    // les 2 lignes si dessous et compiler a nouveau une erreur de compilation 
+    // devrait apparaitre expliquant quon ne puisses pas instancier une classe abstraite
+
+
+    // const AAnimal *j = new AAnimal();
+    // j->makeSound();
+
+    delete  i;
     
     return (0);
 }
