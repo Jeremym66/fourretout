@@ -5,17 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/17 17:57:52 by kaly              #+#    #+#              #
-#    Updated: 2023/10/31 07:23:50 by jmetezea         ###   ########.fr        #
+#    Created: 2023/10/31 09:50:10 by jmetezea          #+#    #+#              #
+#    Updated: 2023/11/01 15:13:40 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = convert
 
-
-NAME = bureaucrat
-
-SRC = 	main.cpp Bureaucrat.class.cpp AForm.class.cpp ShrubberyCreationForm.class.cpp \
-		RobotomyRequestForm.class.cpp PresidentialPardonForm.class.cpp
+SRC = 	main.cpp ScalarConverter.class.cpp
 
 FLAG = -Wall -Werror -Wextra -std=c++98
 
@@ -33,3 +30,4 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: clean all
+

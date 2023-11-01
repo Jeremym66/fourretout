@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.class.hpp                      :+:      :+:    :+:   */
+/*   PresidentialPardonForm.class.hpp                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 07:27:30 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/31 07:32:34 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/10/31 07:26:15 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/10/31 07:32:37 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "AForm.class.hpp"
-#include <random>
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
     private :
 
-        RobotomyRequestForm (void);
+        PresidentialPardonForm (void);
 
     public :
 
-        ~RobotomyRequestForm (void);
-        RobotomyRequestForm (const std::string target);
-        RobotomyRequestForm (const RobotomyRequestForm & other);
+        ~PresidentialPardonForm (void);
+        PresidentialPardonForm (const std::string target);
+        PresidentialPardonForm (const PresidentialPardonForm & other);
 
-        RobotomyRequestForm &	operator=(RobotomyRequestForm const & rhs);
+        PresidentialPardonForm &	operator=(PresidentialPardonForm const & rhs);
         virtual void execute(const Bureaucrat & executor) const;
 
 };

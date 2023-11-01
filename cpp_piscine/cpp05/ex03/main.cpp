@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:27:01 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/31 07:33:15 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/31 08:43:05 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "RobotomyRequestForm.class.hpp"
 #include "PresidentialPardonForm.class.hpp"
 #include "AForm.class.hpp"
+#include "Intern.class.hpp"
 
 int main()
 {
@@ -70,19 +71,38 @@ int main()
         std::cout << e.what() << std::endl;
     }
     std::cout << "-------------------------------------------" << std::endl;
-    //     std::cout << std::endl << "     Test 4 !!!!!!!" << std::endl;
-    // std::cout << "-------------------------------------------" << std::endl;
-    // try
-    // {
-    //     bob.setGrade(10);
-    //     bob.signForm(test);
-    //     bob.signForm(test);
-    // }
-    // catch (std::exception & e)
-    // {
-    //     std::cout << e.what() << std::endl;
-    // }
-    // std::cout << "-------------------------------------------" << std::endl;
+        std::cout << std::endl << "     Test 4 !!!!!!!" << std::endl;
+    std::cout << "-------------------------------------------" << std::endl;
+    try
+    {
+        Intern someRandomIntern;
+        AForm*   rrf;
+
+        rrf = someRandomIntern.MakeForm("robotomy request", "Bender");
+        delete rrf;
+    }
+    catch (std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-------------------------------------------" << std::endl;
+
+    std::cout << "-------------------------------------------" << std::endl;
+    std::cout << std::endl << "     Test 5 !!!!!!!" << std::endl;
+    std::cout << "-------------------------------------------" << std::endl;
+    try
+    {
+        Intern someRandomIntern;
+        AForm*   rrf;
+
+        rrf = someRandomIntern.MakeForm("Laser request", "Toto");
+        delete rrf;
+    }
+    catch (std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-------------------------------------------" << std::endl;
 
     return 0;
 }

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.class.hpp                      :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.class.hpp                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 07:27:30 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/10/31 07:32:34 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/10/28 08:47:34 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <fstream>
 #include "AForm.class.hpp"
-#include <random>
 
-class RobotomyRequestForm : public AForm
+class ShrubberyCreationForm : public AForm
 {
     private :
 
-        RobotomyRequestForm (void);
+        ShrubberyCreationForm(void);
 
     public :
 
-        ~RobotomyRequestForm (void);
-        RobotomyRequestForm (const std::string target);
-        RobotomyRequestForm (const RobotomyRequestForm & other);
+        ~ShrubberyCreationForm(void);
+        ShrubberyCreationForm(const std::string target);
+        ShrubberyCreationForm(const ShrubberyCreationForm & other);
 
-        RobotomyRequestForm &	operator=(RobotomyRequestForm const & rhs);
+        ShrubberyCreationForm &	operator=(ShrubberyCreationForm const & rhs);
         virtual void execute(const Bureaucrat & executor) const;
 
 };
