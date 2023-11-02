@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.class.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kaly <kaly@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:10:02 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/01 15:24:59 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:32:59 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 class ScalarConverter 
 {
 	public:
-		static void	Convert(std::string param);
+		static void	Convert(std::string str);
 
 	private:
 		ScalarConverter();

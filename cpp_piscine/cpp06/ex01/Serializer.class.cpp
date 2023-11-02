@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.class.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaly <kaly@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 09:03:24 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/02 17:50:19 by kaly             ###   ########.fr       */
+/*   Created: 2023/11/02 18:00:26 by kaly              #+#    #+#             */
+/*   Updated: 2023/11/02 18:01:18 by kaly             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.class.hpp"
+#include "Serializer.class.hpp"
 
-int main(int argc, char **argv)
+uintptr_t	Serializer::serialize(Data * ptr)
 {
-    if (argc != 2)
-    {
-        std::cerr << "Usage : ./convert <to_convert>" << std::endl;
-        return 0;
-    }
-    std::string str(argv[1]);
-    if (str.empty())
-    {
-        std::cerr << "The thing you want to convert don't exist!" << std::endl;
-        return 0;
-    }
-    ScalarConverter::Convert(str);
+	return reinterpret_cast<uintptr_t>(ptr);
+}
+
+Data *		Serializer::deserialize(uintptr_t raw) 
+{
+	return reinterpret_cast<Data *>(raw);
 }
