@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/31 09:50:10 by jmetezea          #+#    #+#              #
-#    Updated: 2023/11/03 07:29:22 by jmetezea         ###   ########.fr        #
+#    Created: 2023/11/04 14:14:55 by jmetezea          #+#    #+#              #
+#    Updated: 2023/11/04 14:14:58 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	identify
+NAME =	template
 
-SRC = 	main.cpp Base.class.cpp
+SRC = 	main.cpp
 
 FLAG = -Wall -Werror -Wextra -std=c++98
 
