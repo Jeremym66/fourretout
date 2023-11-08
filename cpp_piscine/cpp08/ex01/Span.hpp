@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 14:13:37 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/07 08:17:14 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/11/08 07:20:46 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/11/08 14:10:24 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,33 @@
 
 #include <iostream>
 #include <string>
-#include <cstdlib>
+#include <algorithm>
+#include <vector>
 #include <stdexcept>
+#include <climits>
 
-template <typename T>
-class Array 
+class Span
 {
-	private:
-		T	*data;
-		int	_size;
-	public:
-		Array(void);
-		Array(unsigned int n);
-		Array(const Array& copy);
-		~Array(void);
+    private :
 
-		T&		operator[](int idx) const;
-		Array&	operator=(const Array& other);
-		int		getsize(void) const;
+        Span(void);
+
+        std::vector<int>	_vec;
+        unsigned int    _size_max;
+        unsigned int    _size;
+
+
+    public :
+
+        ~Span(void);
+        Span(unsigned int N);
+        Span(const Span & src);
+        Span & operator=(const Span & rhs);
+
+        void    addNumber(int nb);
+        void	addManyNumbers(int n);
+        unsigned int     shortestSpan(void);
+        unsigned int     longestSpan(void);
 
         class Exception : public std::exception
         {
@@ -41,15 +50,11 @@ class Array
             
             public :
 
-                Exception(void);
-                Exception(const char *_msg);
+                Exception(void) : _msg("error") {}
+                Exception(const char *msg) : _msg(msg) {}
                 const char* what() const throw()
                 {
                     return this->_msg;
                 }
         };
 };
-
-template <typename T>
-std::ostream&	operator<<(std::ostream& out, const Array<T>& array);
-

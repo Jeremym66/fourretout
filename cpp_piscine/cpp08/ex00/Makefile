@@ -5,14 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/04 14:14:55 by jmetezea          #+#    #+#              #
-#    Updated: 2023/11/07 08:00:32 by jmetezea         ###   ########.fr        #
+#    Created: 2023/11/04 11:37:16 by jmetezea          #+#    #+#              #
+#    Updated: 2023/11/08 07:31:34 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	template
 
-SRC = 	main.cpp Array.cpp
+
+NAME =	easyfind
+
+SRC = 	main.cpp
 
 FLAG = -Wall -Werror -Wextra -std=c++98
 
@@ -30,3 +32,4 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: clean all
+

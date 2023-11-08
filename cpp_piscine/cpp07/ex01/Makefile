@@ -6,11 +6,11 @@
 #    By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 13:45:37 by jmetezea          #+#    #+#              #
-#    Updated: 2023/11/04 13:45:42 by jmetezea         ###   ########.fr        #
+#    Updated: 2023/11/07 06:58:18 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	template
+NAME =	iter
 
 SRC = 	main.cpp
 
