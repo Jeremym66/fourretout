@@ -6,104 +6,136 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:25:31 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/09 14:26:14 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/11/13 08:28:05 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "BitcoinExchange.hpp"
 
-Span::Span(unsigned int N) : _size(0), _size_max(N)
+BitcoinExchange::BitcoinExchange(std::ifstream &file, char **av)
 {
-    std::cout << "constructor Span" << std::endl;
+	std::ifstream	ifdata;
+
+    std::cout << "constructor BitcoinExchange" << std::endl;
+	ifdata.open("data.csv", std::ifstream::in);
+	this->fillMap(ifdata);
+	this->fillInput(file, av);
 }
 
-Span::~Span() 
+BitcoinExchange::~BitcoinExchange() 
 {
-    std::cout << "destructor Span" << std::endl << std::endl;
+    std::cout << "destructor BitcoinExchange" << std::endl << std::endl;
 }
 
-Span::Span(const Span & src)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange & src)
 {
-	this->_vec = src._vec;
-	this->_size_max = src._size_max;
-	this->_size = src._size;
+	*this = src;
+	std::cout << "constructor BitcoinExchange copy" << std::endl;
 }
 
-Span & Span::operator=(const Span & rhs)
+BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & rhs)
 {
 	if (this != &rhs)
 	{
-		this->_vec = rhs._vec;
-		this->_size_max = rhs._size_max;
-		this->_size = rhs._size;
+		this->_data = rhs._data;
 	}
     return *this;
 }
 
-void	Span::addNumber(int nb)
+void	BitcoinExchange::fillMap(std::ifstream &file)
 {
-	this->_size++;
-	if (this->_size > this->_size_max)
-		throw Exception("Span is full !");
-	this->_vec.push_back(nb);
-	std::cout << "Number : " << nb << " added to list." << std::endl;
+	std::string		date;
+	std::string		line;
+	float			value;
+
+	while (getline(file, line))
+	{
+		date = strtok((char *)line.c_str(), ",");
+		value = std::atof(strtok(NULL, "\n"));
+		this->_data.insert(std::pair<std::string, float>(date, value));
+	}
 }
 
-void	Span::addManyNumbers(int n)
+void	BitcoinExchange::printMap()
 {
-	if (this->_size + n > this->_size_max) 
+	std::map<std::string, float>::iterator it;
+
+	for (it = this->_data.begin(); it != this->_data.end(); it++)
 	{
-		std::cout << "Can't add " << n << " elements to the array, size_max(" << this->_size_max << ") will be reached" << std::endl;
-		return;
+		std::cout << it->first << " => " << it->second << std::endl;
 	}
-	int nb = 0;
-	
-	srand(time(NULL));
-	for (unsigned int i = 0; i != n; i++)
+}
+
+void	BitcoinExchange::fillInput(std::ifstream &inputs, char **av)
+{
+	std::string		date;
+	std::string		line;
+	float			value;
+
+	inputs.open(av[1], std::ifstream::in);
+	getline(inputs, line);
+	while (getline(inputs, line))
 	{
-		if (i % 2)
-			nb = rand() % 100000;
+		if (line.find("|") == std::string::npos)
+			std::cout << "Error: bad input => " << line << std::endl;
 		else
-			nb = (rand() % 100000) * (-1);
-		this->addNumber(nb);
-		// std::cout << this->_size << " / " << this->_size_max << " : " << nb << std::endl;
-	}
-}
-
-unsigned int     Span::shortestSpan()
-{
-	if (this->_size < 2)
-		throw Exception("Not enough number in the list");
-
-	unsigned int	shortest = 4294967295;	
-	std::vector<int> sorted = _vec;
-
-	std::sort(sorted.begin(), sorted.end());
-	if (this->_size == 2)
-	{
-		shortest = sorted.back() - sorted.front();
-		return (shortest);
-	}
-	std::vector<int>::const_iterator	it = sorted.begin();
-	std::vector<int>::const_iterator	ite = sorted.end();
-	while (it != ite)
-    {
-		if (shortest > abs(*it - *(++it)))
 		{
-			it--;
-			shortest = abs(*it - *(++it));
+			date = strtok((char *)line.c_str(), "|");
+			value = std::atof(strtok(NULL, "\n"));
+			try
+			{
+				verifyInput(date, value);
+				this->_data.insert(std::pair<std::string, float>(date, value));
+				findDate(date, value);
+			}
+			catch(const std::exception& e)
+			{
+				std::cerr << e.what() << '\n';
+			}
 		}
 	}
-	return (shortest);
 }
 
-unsigned int     Span::longestSpan()
+void BitcoinExchange::findDate(std::string date, float value)
 {
-	if (this->_size < 2)
-		throw Exception("Not enough number in the list");
-	std::vector<int> sorted = _vec;
-	std::sort(sorted.begin(), sorted.end());
-	unsigned int longest = sorted.back() - sorted.front();
-	return (longest);
+	std::map<std::string, float>::iterator it = this->_data.find(date);
+	if (it != this->_data.end())
+	{
+		it--;
+		std::cout << it->first << " => " << value << " = " << (value * it->second) << std::endl;
+		this->_data.erase(date);
+	}
+}
+
+void BitcoinExchange::verifyInput(std::string date, float value)
+{
+	std::string	year;
+	std::string	month;
+	std::string	day;
+	std::string	dates;
+
+	year = strtok((char *)date.c_str(), "-");
+	month = strtok(NULL, "-");
+	day = strtok(NULL, "\0");
+	dates = year + month + day;
+	if (dates.length() > 10 || dates.length() < 9)
+		throw std::logic_error("error: bad input => " + date);
+	if ((std::atoi(dates.c_str()) > 20220329) || std::atoi(dates.c_str()) < 20090102)
+		throw std::logic_error("error: bad input => " + date);
+	if (std::atoi(month.c_str()) > 12 || std::atoi(day.c_str()) > 31)
+		throw std::logic_error("error: bad input => " + date);
+	if (value > 1000)
+		throw std::logic_error("error: too large number.");
+	if (value < 0)
+		throw std::logic_error("error: not positive number.");
+	std::map<std::string, float>::iterator it = this->_data.find(date);
+	if (it != this->_data.end())
+	{
+		float valueF = value * it->second;
+		std::ostringstream oss;
+		oss << valueF;
+		std::string myString = oss.str();
+		throw std::logic_error(it->first + " => " + myString);
+	}
 }

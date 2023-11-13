@@ -6,111 +6,28 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:26:22 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/09 14:26:39 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/11/13 08:26:14 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-	std::cout << "*****************************" << std::endl;
-    std::cout << "**       First's Test      **" << std::endl;
-    std::cout << "*****************************" << std::endl << std::endl;
+	std::ifstream file;
+
 	try
 	{
-		Span sp = Span(10000);
-		int nb;
-
-		srand(time(NULL));
-		for (unsigned int i = 0; i != 10000; i++)
+		if (argc != 2)
 		{
-			if (i % 2)
-				nb = rand() % 100000;
-			else
-				nb = (rand() % 100000) * (-1);
-			sp.addNumber(nb);
+			std::cout << "Usage : ./btc file" << std::endl;
+			return 1;
 		}
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+		BitcoinExchange bitcoin(file, argv);
 	}
-	catch(std::exception &e)
-    {
-		std::cout << e.what() << std::endl << std::endl;
-    }
-	
-    std::cout << "*****************************" << std::endl;
-    std::cout << "**       Second's Test     **" << std::endl;
-    std::cout << "*****************************" << std::endl << std::endl;
-	try
+	catch(const std::exception& e)
 	{
-		Span sp = Span(5);
-
-		sp.addNumber(6);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
-		sp.addNumber(12);
+		std::cerr << e.what() << std::endl;
 	}
-	catch(std::exception &e)
-    {
-		std::cout << e.what() << std::endl << std::endl;
-    }
-
-    std::cout << "*****************************" << std::endl;
-    std::cout << "**       Third's Test      **" << std::endl;
-    std::cout << "*****************************" << std::endl << std::endl;
-	try
-	{
-		Span sp = Span(5);
-
-		sp.addNumber(6);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
-
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
-	}
-	catch(std::exception &e)
-    {
-		std::cout << e.what() << std::endl << std::endl;
-    }
-
-	std::cout << "*****************************" << std::endl;
-    std::cout << "**       Fourth's Test     **" << std::endl;
-    std::cout << "*****************************" << std::endl << std::endl;
-	try
-	{
-		Span sp = Span(2);
-
-		sp.addNumber(INT_MAX);
-		sp.addNumber(INT_MIN);
-
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
-	}
-	catch(std::exception &e)
-    {
-		std::cout << e.what() << std::endl << std::endl;
-    }
-
-	std::cout << "*****************************" << std::endl;
-    std::cout << "**       Last's Test       **" << std::endl;
-    std::cout << "*****************************" << std::endl << std::endl;
-	try
-	{
-		Span sp = Span(50);
-
-		sp.addManyNumbers(60);
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
-	}
-	catch(std::exception &e)
-    {
-		std::cout << e.what() << std::endl << std::endl;
-    }
 	return 0;
 }

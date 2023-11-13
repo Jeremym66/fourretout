@@ -1,46 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 07:20:46 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/08 14:10:24 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/11/13 09:36:46 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/11/13 11:51:41 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <iomanip>
 #include <string>
-#include <algorithm>
-#include <vector>
+#include <cstring>
+#include <cstdlib>
 #include <stdexcept>
-#include <climits>
+#include <stack>
 
-class Span
+class RPN
 {
     private :
 
-        Span(void);
-
-        std::vector<int>	_vec;
-        unsigned int    _size_max;
-        unsigned int    _size;
-
+        std::stack<char> _stack;
 
     public :
 
-        ~Span(void);
-        Span(unsigned int N);
-        Span(const Span & src);
-        Span & operator=(const Span & rhs);
+        RPN(void);
+        ~RPN(void);
+        RPN(const RPN & src);
+        RPN & operator=(const RPN & rhs);
 
-        void    addNumber(int nb);
-        void	addManyNumbers(int n);
-        unsigned int     shortestSpan(void);
-        unsigned int     longestSpan(void);
+        void    fillStack(char *argv);
 
         class Exception : public std::exception
         {
