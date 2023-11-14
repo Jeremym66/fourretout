@@ -1,39 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 09:36:46 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/13 11:51:41 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/11/14 07:08:23 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/11/14 10:18:36 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <algorithm>
+#include <sys/time.h>
+#include <iostream>
 #include <iomanip>
 #include <string>
 #include <cstring>
 #include <cstdlib>
 #include <stdexcept>
-#include <stack>
+#include <vector>
+#include <list>
+#include <thread>
+#include <ctime>
 
-class RPN
+class PmergeMe
 {
     private :
 
-        std::stack<char> _stack;
+        std::vector<int> _vec;
+        std::list<int> _list;
 
+        PmergeMe(void);
+        
     public :
 
-        RPN(void);
-        ~RPN(void);
-        RPN(const RPN & src);
-        RPN & operator=(const RPN & rhs);
+        
+        PmergeMe(int ac, char **av);
+        ~PmergeMe(void);
+        PmergeMe(const PmergeMe & src);
+        PmergeMe & operator=(const PmergeMe & rhs);
 
-        void    fillStack(char *argv);
+
+        void    merge(std::vector<int> & arr, int left, int middle, int right);
+        void    mergeSort(std::vector<int> & arr, int left, int right);
+        void    mergeList(std::list<int>& arr, std::list<int>::iterator left, std::list<int>::iterator middle, std::list<int>::iterator right);
+        void    mergeSortList(std::list<int>& arr, std::list<int>::iterator left, std::list<int>::iterator right);
+
+        long long int	getTime();
+        
+        template <typename T>
+	    void    display(const T& container);
 
         class Exception : public std::exception
         {

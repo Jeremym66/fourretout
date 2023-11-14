@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/04 11:37:16 by jmetezea          #+#    #+#              #
-#    Updated: 2023/11/13 09:50:30 by jmetezea         ###   ########.fr        #
+#    Created: 2023/11/14 07:06:34 by jmetezea          #+#    #+#              #
+#    Updated: 2023/11/14 07:06:46 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
+NAME =	PmergeMe
 
-NAME =	RPN
-
-SRC = 	main.cpp RPN.cpp
+SRC = 	main.cpp PmergeMe.cpp
 
 FLAG = -Wall -Werror -Wextra -std=c++98
 

@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:21:44 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/13 14:39:43 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:52:38 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(int argc, char **argv)
 {
 	std::cout << "*****************************" << std::endl;
-    std::cout << "**       RPN's Test      **" << std::endl;
+    std::cout << "**       RPN's Test        **" << std::endl;
     std::cout << "*****************************" << std::endl << std::endl;
 	try
 	{

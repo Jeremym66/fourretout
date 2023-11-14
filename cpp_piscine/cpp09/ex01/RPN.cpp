@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:39:30 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/13 14:53:37 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:28:56 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,66 +39,126 @@ RPN & RPN::operator=(const RPN & rhs)
 
 void    RPN::fillStack(char *str)
 {
-	int i = 5;
-	char arg2;
-	char arg1;
-	int	result;
-	if (str[0] < 58 && str[0] >= 48 && str[2] < 58 && str[2] >= 48 && str[1] == ' ' && str[3] == ' ')
-	{
-		arg2 = str[0];
-		arg1 = str[2];
-		if (str[4] == '+')
-			result = (arg2 - 48) + (arg1 - 48);
-		else if (str[4] == '-')
-			result = (arg2 - 48) - (arg1 - 48);
-		else if (str[4] == '*')
-			result = (arg2 - 48) * (arg1 - 48);
-		else if (str[4] == '/')
-			result = (arg2 - 48) / (arg1 - 48);
-		this->_stack.push(result + 48);
-	}
-	else
-		throw Exception("Error argument");
-	while (str[i])
+	int		result = 0;
+	int		digit = 0;
+	int		sign = 0;
+
+	int i = -1;
+	while (str[++i])
 	{
 		if (str[i] == ' ')
-			i++;
-		if (str[i] < 58 && str[i] >= 48)
+		{}
+		else if (isdigit(str[i]))
 		{
-			if (str[i + 1] == 0)
-				throw Exception("Error argument : need Sign");
-			if (str[i + 1] == ' ')
-			{
-				this->_stack.push(str[i]);
-				i += 2;
-			}
-			else
+			if (str[i + 1] != ' ')
 				throw Exception("Error argument : number too high");
-			if (str[i] == '*' || str[i] == '/' || str[i] == '-' || str[i] == '+')
-			{
-				arg2 = _stack.top();
-				_stack.pop();
-				arg1 = _stack.top();
-				_stack.pop();
-				if (str[i] == '+')
-					result = (arg1 - 48) + (arg2 - 48);
-				else if (str[i] == '-')
-					result = (arg1 - 48) - (arg2 - 48);
-				else if (str[i] == '*')
-					result = (arg1 - 48) * (arg2 - 48);
-				else if (str[i] == '/')
-					result = (arg1 - 48) / (arg2 - 48);
-				i++;
-				this->_stack.push(result + 48);
-			}
-			else
-				throw Exception("Error");
+			digit++;
+		}
+		else if ((str[i]) == '*' || (str[i]) == '/' || (str[i]) == '+' || (str[i]) == '-')
+			sign++;
+		else
+			throw Exception("Error argument : not a number");
+	}
+	if (sign != digit - 1)
+		throw std::runtime_error("Error syntax: You must have one digit more than signs.");
+	digit = 0;
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == ' ')
+		{}
+		else if (str[i] < 58 && str[i] >= 48)
+		{
+			this->_stack.push(str[i] - '0');
+			digit++;
+		}
+		else if (((str[i]) == '*' || (str[i]) == '/' || (str[i]) == '+' || (str[i]) == '-') && digit > 1)
+		{
+			_arg2 = this->_stack.top();
+			this->_stack.pop();
+			_arg1 = this->_stack.top();
+			this->_stack.pop();
+			if (str[i] == '*')
+				result = _arg1 * _arg2;
+			if (str[i] == '/')
+				result = _arg1 / _arg2;
+			if (str[i] == '+')
+				result = _arg1 + _arg2;
+			if (str[i] == '-')
+				result = _arg1 - _arg2;
+			this->_stack.push(result);
+			digit--;
 		}
 		else
-				throw Exception("Error argument : need number <0 - 9>");
+		{
+			std::cout << "Error" << std::endl; 
+			return;
+		}
 	}
-	std::cout << result << " is result final" << std::endl;
+	std::cout << result << std::endl;
 }
+// 	int i = 5;
+// 	char arg2;
+// 	char arg1;
+// 	int	result;
+// 	if (str[0] < 58 && str[0] >= 48 && str[2] < 58 && str[2] >= 48 && str[1] == ' ' && str[3] == ' ')
+// 	{
+// 		arg2 = str[0];
+// 		arg1 = str[2];
+// 		if (str[4] == '+')
+// 			result = (arg2 - 48) + (arg1 - 48);
+// 		else if (str[4] == '-')
+// 			result = (arg2 - 48) - (arg1 - 48);
+// 		else if (str[4] == '*')
+// 			result = (arg2 - 48) * (arg1 - 48);
+// 		else if (str[4] == '/')
+// 			result = (arg2 - 48) / (arg1 - 48);
+// 		this->_stack.push(result + 48);
+// 	}
+// 	else
+// 		throw Exception("Error argument");
+// 	while (str[i])
+// 	{
+// 		if (str[i] < 58 && str[i] >= 48)
+// 		{
+// 			if (str[i + 1] == 0)
+// 				throw Exception("Error argument : need Sign");
+// 			if (str[i + 1] == ' ')
+// 			{
+// 				this->_stack.push(str[i]);
+// 				i += 2;
+// 			}
+// 			else
+// 				throw Exception("Error argument : number too high");
+// 			if (str[i] == '*' || str[i] == '/' || str[i] == '-' || str[i] == '+')
+// 			{
+// 				arg2 = _stack.top();
+// 				std::cout << result << " is result" << std::endl;
+// 				_stack.pop();
+// 				arg1 = _stack.top();
+// 				std::cout << arg1 << " is result" << std::endl;
+// 				_stack.pop();
+// 				if (str[i] == '+')
+// 					result = (arg1 - 48) + (arg2 - 48);
+// 				else if (str[i] == '-')
+// 					result = (arg1 - 48) - (arg2 - 48);
+// 				else if (str[i] == '*')
+// 					result = (arg1 - 48) * (arg2 - 48);
+// 				else if (str[i] == '/')
+// 					result = (arg1 - 48) / (arg2 - 48);
+// 				i++;
+// 				this->_stack.push(result + 48);
+// 				std::cout << result << " is result" << std::endl;
+
+// 			}
+// 			else
+// 				throw Exception("Error");
+// 		}
+// 		else
+// 				throw Exception("Error argument : need number <0 - 9>");
+// 	}
+// 	std::cout << result << " is result final" << std::endl;
+// }
 
 // void    RPN::fillStack(char *str)
 // {
@@ -132,7 +192,7 @@ void    RPN::fillStack(char *str)
 // 			_stack.pop();
 // 			if (str[i] == '+')
 // 				result = (arg1 - 48) + (arg2 - 48);
-// 			std::cout << result << " is result" << std::endl;
+// 			std::cout << result << " is result"v << std::endl;
 // 			i++;
 // 			this->_stack.push(result + 48);
 // 		}

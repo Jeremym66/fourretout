@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:36:46 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/13 11:51:41 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:44:43 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ class RPN
 {
     private :
 
-        std::stack<char> _stack;
+        std::stack<int> _stack;
+        int _arg1;
+        int _arg2;
 
     public :
 
