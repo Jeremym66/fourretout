@@ -5,16 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/17 17:57:52 by kaly              #+#    #+#              #
-#    Updated: 2023/11/15 08:04:48 by jmetezea         ###   ########.fr        #
+#    Created: 2023/11/15 07:41:55 by jmetezea          #+#    #+#              #
+#    Updated: 2023/11/15 09:23:51 by jmetezea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME =	materia
 
-
-NAME = Bureaucrat
-
-SRC = 	main.cpp AMateria.cpp
+SRC = ${wildcard *.cpp}
 
 FLAG = -Wall -Werror -Wextra -std=c++98
 
@@ -23,7 +21,7 @@ OBJ = $(SRC:%.cpp=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	c++ $(FLAG) -o $(NAME) $(OBJ)
+	g++ $(FLAG) -o $(NAME) $(OBJ)
 
 clean:
 	rm -rf *.o
