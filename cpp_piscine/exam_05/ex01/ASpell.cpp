@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 19:16:27 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/22 19:27:19 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:47:39 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 ASpell::ASpell(void) {}
 
-ASpell::~ASpell(void) { std::cout << "ASpell destructor" << std::endl; }
+ASpell::~ASpell(void) {}
 
-ASpell::ASpell(const std::string & namee, const std::string & effectse) : name(namee), effects(effectse)
-{
-    std::cout << name << " constructor" << std::endl;
-}
+ASpell::ASpell(const std::string & namee, const std::string & effects) : name(namee), effects(effects)
+{}
 
-ASpell::ASpell(const ASpell & src)
-{
-    *this = src;
-}
+ASpell::ASpell(const ASpell & src) { *this = src; }
 
 ASpell & ASpell::operator=(const ASpell & rhs)
 {
@@ -44,4 +39,9 @@ const std::string & ASpell::getName() const
 const std::string & ASpell::getEffects() const
 {
     return (this->effects);
+}
+
+void ASpell::launch(const ATarget & target) const
+{
+    target.getHitBySpell(*this);
 }

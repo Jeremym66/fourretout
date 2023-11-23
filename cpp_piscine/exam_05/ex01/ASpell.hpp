@@ -1,39 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Warlock.hpp                                        :+:      :+:    :+:   */
+/*   ASpell.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 10:11:46 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/22 19:15:43 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/11/22 19:13:05 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/11/23 18:46:24 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #pragma once
 
 #include <iostream>
 #include <string>
 
-class Warlock
-{
-    private :
+#include "ATarget.hpp"
 
-        Warlock(void);
-        Warlock(const Warlock & src);
-        Warlock & operator=(const Warlock & rhs);
-        
+class ATarget;
+
+class ASpell
+{
+    protected :
+
         std::string name;
-        std::string title;
+        std::string effects;
 
     public :
 
-        Warlock(const std::string & namee, const std::string & titlee);
-        ~Warlock(void);
+        ASpell(void);
+        ASpell(const ASpell & src);
+        ASpell & operator=(const ASpell & rhs);
+        virtual ~ASpell(void);
+
+        ASpell(const std::string & name, const std::string & effects);
 
         const std::string & getName() const;
-        const std::string & getTitle() const;
-        void setTitle(const std::string & str);
+        const std::string & getEffects() const;
 
-        void introduce() const;
+        void launch(const ATarget & target) const;
+        
+        virtual ASpell * clone(void) const = 0;
 };
