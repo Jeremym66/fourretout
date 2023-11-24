@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fwoosh.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 10:08:14 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/24 07:27:37 by jmetezea         ###   ########.fr       */
+/*   Created: 2023/11/23 16:37:35 by jmetezea          #+#    #+#             */
+/*   Updated: 2023/11/23 16:45:38 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Warlock.hpp"
+#pragma once
+
+#include <iostream>
+#include <string>
+
 #include "ASpell.hpp"
-#include "ATarget.hpp"
-#include "Fwoosh.hpp"
-#include "Dummy.hpp"
 
-int main()
+
+class Fwoosh : public ASpell
 {
-  Warlock richard("Richard", "the Titled");
 
-  Dummy bob;
-  Fwoosh* fwoosh = new Fwoosh();
+    public :
 
-  richard.learnSpell(fwoosh);
+        Fwoosh(void);
+        ~Fwoosh(void);
 
-  richard.introduce();
-  richard.launchSpell("Fwoosh", bob);
-
-  // richard.forgetSpell("Fwoosh");
-  richard.launchSpell("Fwoosh", bob);
-  delete fwoosh;
-}
-
+        Fwoosh * clone(void) const;
+};

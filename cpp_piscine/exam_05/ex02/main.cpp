@@ -6,7 +6,7 @@
 /*   By: jmetezea <jmetezea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:08:14 by jmetezea          #+#    #+#             */
-/*   Updated: 2023/11/24 07:27:37 by jmetezea         ###   ########.fr       */
+/*   Updated: 2023/11/24 07:27:32 by jmetezea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main()
   richard.introduce();
   richard.launchSpell("Fwoosh", bob);
 
-  // richard.forgetSpell("Fwoosh");
+  richard.forgetSpell("Fwoosh");
   richard.launchSpell("Fwoosh", bob);
   delete fwoosh;
 }
