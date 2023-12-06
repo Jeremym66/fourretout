@@ -13,7 +13,7 @@
 
 
 #define FILE_PATH "/tmp/exercice.ctl"
-#define PORT 4847
+#define PORT 4848
 #define MAX_ENTRIES 100
 
 struct Entry
@@ -182,10 +182,10 @@ void startDaemon()
 
     if (pid > 0)
     {
-        // printf("pid parent (daemon): %d\n", getpid());
+        printf("pid parent (daemon): %d\n", getpid());
         exit(EXIT_SUCCESS);
     }
-    // printf("pid enfant (daemon): %d\n", getpid());
+    printf("pid enfant (daemon): %d\n", getpid());
 
     setsid();
 }
@@ -226,7 +226,7 @@ int main()
     if (listen(server_socket, 5) == -1) 
         close_daemon(fileMonitorThread, "Error listening on socket");
 
-    // printf("Daemon en attente de connexions sur le port %d...\n", PORT);
+    printf("Daemon en attente de connexions sur le port %d...\n", PORT);
 
     // Boucle principale d'acceptation des connexions
     while (1)
@@ -237,12 +237,16 @@ int main()
             perror("Error accepting connection");
             continue;
         }
-        int pid = fork();
+
+        int pid;
+        pid = fork();
     
+        
+
         // Gérer le client dans un processus fils
         if (pid == 0)
         {
-            // printf("pid enfant (client): %d\n", getpid());
+            printf("pid enfant (client): %d\n", getpid());
             // Fermer le socket du serveur dans le processus fils
             close(server_socket);
             // Gérer les commandes du client
@@ -254,7 +258,7 @@ int main()
         {
             if (pid > 0)
             { 
-                // printf("pid parent (client): %d\n", getpid());
+                printf("pid parent (client): %d\n", getpid());
                 waitpid(pid, NULL, 0);
             }
             close(client_socket);   // Fermes le socket du client dans le processus parent
