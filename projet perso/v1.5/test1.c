@@ -13,7 +13,7 @@
 
 
 #define FILE_PATH "/tmp/exercice.ctl"
-#define PORT 4847
+#define PORT 4848
 #define MAX_ENTRIES 100
 
 struct Entry

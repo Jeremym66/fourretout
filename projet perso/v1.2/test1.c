@@ -104,42 +104,10 @@ void handle_client(int client_socket)
                     dprintf(client_socket, "> Position : %d\n", i + 1);
                     dprintf(client_socket, "> Date : %s\n", entries[i].date);
                     dprintf(client_socket, "> String : %s\n", entries[i].string);
+                    // entries[i] = entries[i + 1];
                     i++;
                 }
             }
-        }
-        else if (strncmp(buffer, "delete", 6) == 0)
-        {
-            if (entryCount >= 1)
-            {
-                int i = 0; 
-                while (i < entryCount) 
-                {
-                    entries[i] = entries[i + entryCount];
-                    i++;
-                }
-            }
-            entryCount = 0;
-            dprintf(client_socket, "Le tableau a ete efface\n");
-        }
-        else if (buffer[0] == '@' && buffer[2] == '-') 
-        {
-            int index1 = buffer[1] - 48;
-            int index2 = buffer[3] - 48;
-
-            while (index1 >= 1 && index1 <= index2) 
-            {
-                // Récupérer les détails de l'entrée
-                struct Entry * entry = &entries[index1 - 1];
-
-                // Envoyer les détails au client
-                dprintf(client_socket, "> Number : %d\n", entry->number);
-                dprintf(client_socket, "> Position : %d\n", index1);
-                dprintf(client_socket, "> Date : %s\n", entry->date);
-                dprintf(client_socket, "> String : %s\n", entry->string);
-
-                index1++;
-            } 
         }
         else if (buffer[0] == '@') 
         {
@@ -167,16 +135,13 @@ void handle_client(int client_socket)
             else
                 dprintf(client_socket, "Entrée non valide.\n");
         }
-        
         else if (strncmp(buffer, "exit", 4) == 0)
             break;
         else if (strncmp(buffer, "help", 4) == 0)
         {
             dprintf(client_socket, "tapez #<nombre> pour afficher la string numero <nombre> et l'effacer\n");
             dprintf(client_socket, "tapez @<nombre> pour afficher la string en position <nombre> et leffacer\n");
-            dprintf(client_socket, "tapez @<nombre>-<nombre> pour afficher les string en position dans la tranche <nombre>-<nombre> et leffacer\n");
             dprintf(client_socket, "tapez @@ pour afficher la liste des strings\n");
-            dprintf(client_socket, "tapez delete pour sortir effacer les donnees\n");
             dprintf(client_socket, "tapez exit pour sortir du client\n");
         }
         else
@@ -291,7 +256,28 @@ int main()
             perror("Error accepting connection");
             continue;
         }
-        handle_client(client_socket);
+        int pid = fork();
+    
+        // Gérer le client dans un processus fils
+        if (pid == 0)
+        {
+            // printf("pid enfant (client): %d\n", getpid());
+            // Fermer le socket du serveur dans le processus fils
+            close(server_socket);
+            // Gérer les commandes du client
+            handle_client(client_socket);
+            // Terminer le processus fils
+            exit(EXIT_SUCCESS);
+        }
+        else
+        {
+            if (pid > 0)
+            { 
+                // printf("pid parent (client): %d\n", getpid());
+                waitpid(pid, NULL, 0);
+            }
+            close(client_socket);   // Fermes le socket du client dans le processus parent
+        }
     }
     // shutdownRequested = 1;
     // pthread_join(fileMonitorThread, NULL);

@@ -13,7 +13,7 @@
 
 
 #define FILE_PATH "/tmp/exercice.ctl"
-#define PORT 4847
+#define PORT 4848
 #define MAX_ENTRIES 100
 
 struct Entry
@@ -122,25 +122,6 @@ void handle_client(int client_socket)
             entryCount = 0;
             dprintf(client_socket, "Le tableau a ete efface\n");
         }
-        else if (buffer[0] == '@' && buffer[2] == '-') 
-        {
-            int index1 = buffer[1] - 48;
-            int index2 = buffer[3] - 48;
-
-            while (index1 >= 1 && index1 <= index2) 
-            {
-                // Récupérer les détails de l'entrée
-                struct Entry * entry = &entries[index1 - 1];
-
-                // Envoyer les détails au client
-                dprintf(client_socket, "> Number : %d\n", entry->number);
-                dprintf(client_socket, "> Position : %d\n", index1);
-                dprintf(client_socket, "> Date : %s\n", entry->date);
-                dprintf(client_socket, "> String : %s\n", entry->string);
-
-                index1++;
-            } 
-        }
         else if (buffer[0] == '@') 
         {
             int index = 0;
@@ -167,14 +148,12 @@ void handle_client(int client_socket)
             else
                 dprintf(client_socket, "Entrée non valide.\n");
         }
-        
         else if (strncmp(buffer, "exit", 4) == 0)
             break;
         else if (strncmp(buffer, "help", 4) == 0)
         {
             dprintf(client_socket, "tapez #<nombre> pour afficher la string numero <nombre> et l'effacer\n");
             dprintf(client_socket, "tapez @<nombre> pour afficher la string en position <nombre> et leffacer\n");
-            dprintf(client_socket, "tapez @<nombre>-<nombre> pour afficher les string en position dans la tranche <nombre>-<nombre> et leffacer\n");
             dprintf(client_socket, "tapez @@ pour afficher la liste des strings\n");
             dprintf(client_socket, "tapez delete pour sortir effacer les donnees\n");
             dprintf(client_socket, "tapez exit pour sortir du client\n");
