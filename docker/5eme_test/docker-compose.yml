@@ -1,0 +1,42 @@
+version: "3"
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+
+volumes:
+  db_data: {}
+
+#image qui permet de spécifier l'image source pour le conteneur ;
+
+#build qui permet de spécifier le Dockerfile source pour créer l'image du conteneur ;
+
+#volume qui permet de spécifier les points de montage entre le système hôte et les conteneurs ;
+
+#restart qui permet de définir le comportement du conteneur en cas d'arrêt du processus ;
+
+#environment qui permet de définir les variables d’environnement ;
+
+#depends_on qui permet de dire que le conteneur dépend d'un autre conteneur ;
+
+#ports qui permet de définir les ports disponibles entre la machine host et le conteneur.
