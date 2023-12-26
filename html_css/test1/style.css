@@ -1,0 +1,15 @@
+h1, p {
+    color:darkblue;
+}
+
+.rouge {
+    color:red;
+}
+
+#logo {
+    color:blueviolet;
+}
+
+.grand_texte {
+    font-size: 30px;
+}
