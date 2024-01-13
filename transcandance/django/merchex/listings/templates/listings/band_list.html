@@ -1,0 +1,43 @@
+{% extends "listings/base.html" %}
+
+{% block content %}
+    <h1>Groupes</h1>
+    <p>J'ai {{ bands|length }} groupes préférés.</p>
+    <p>Mes groupes préférés sont :</p>
+    <ul>
+        {% for band in bands %}
+        <li>
+            <a href="{% url 'band-detail' band.id %}">{{ band.name }}</a>
+                -   <a href="{% url 'band-update' band.id %}">[modifier]</a>
+                -   <a href="{% url 'band-delete' band.id %}">[supprimer]</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'band-create' %}">Creer un nouveau groupe</a>
+{% endblock %}
+
+<!-- <html>
+    <head><title>Merchex</title></head>
+    <body>
+        <h1>Hello Django !</h1>
+        <p>
+            J'ai..
+            {% if bands|length < 5 %}
+                peu de
+            {% elif bands|length < 10 %}
+                quelques
+            {% else %}
+                beaucoup de
+            {% endif %}
+                groupes préférés.
+        </p>
+        <p>J'ai {{ bands|length }} groupes préférés.</p>
+        <p>Mes groupes préférés sont :</p>
+        <ul>
+            {% for band in bands %}
+            <li>{{ band.name|upper }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html> -->
