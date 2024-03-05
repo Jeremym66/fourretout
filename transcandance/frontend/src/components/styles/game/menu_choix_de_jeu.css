@@ -1,0 +1,25 @@
+.button {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.newGameButton {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #f00;
+}
+
+.button-red {
+    background-color: #f00;
+}
+
+.button-blue {
+    background-color: #00f;
+}
+

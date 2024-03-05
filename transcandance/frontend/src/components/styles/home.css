@@ -1,0 +1,100 @@
+/* Variables pour les couleurs et autres valeurs réutilisées */
+:root {
+    --bg-color: #443a6c;
+    --text-color: #fff;
+    --section-border-radius: 30px;
+  }
+  
+  .Home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-color);
+  }
+  
+  .banner-container {
+    width: 90%;
+    margin-top: 1%;
+  }
+  
+  .banner {
+    width: 100%;
+    border-radius: var(--section-border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section {
+    width: 90%;
+    margin-top: 2%;
+    padding: 2%;
+    border-radius: var(--section-border-radius);
+    background: var(--bg-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+  
+  .player-cards-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .titre_top_players{
+    color: #fff;
+  }
+  
+  .top_players {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .how-to-play-text {
+    color: #fff;
+  }
+
+  .player-card {
+    background: #6c5b7b; /* Couleur de fond de la carte */
+    border-radius: 20px; /* Coins arrondis */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour donner de la profondeur */
+    text-align: center;
+    margin: 10px;
+    transition: transform 0.2s; /* Animation au survol */
+  }
+  
+  .player-card:hover {
+    transform: translateY(-5px); /* Déplace légèrement la carte vers le haut au survol */
+  }
+  
+  .player-image {
+    width: 80px; /* Taille de l'image du joueur */
+    height: 80px; /* Taille de l'image du joueur */
+    border-radius: 50%; /* Rend l'image circulaire */
+    object-fit: cover; /* S'assure que l'image couvre bien l'espace sans être déformée */
+    border: 3px solid #fff; /* Bordure blanche autour de l'image */
+    margin-bottom: 10px;
+  }
+  
+  .player-details {
+    color: #fff; /* Couleur du texte */
+  }
+  
+  .player-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .player-score {
+    color: #d3d3d3; /* Couleur plus claire pour le score */
+    font-size: 0.8em;
+  }
+  

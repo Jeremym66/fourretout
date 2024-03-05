@@ -1,0 +1,59 @@
+.leaderboard-container {
+    background-color: #7C5AC2;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .profile-summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .user-photo, .avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+  
+  .leaderboard {
+    background: #9B87B3;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  th {
+    border-bottom: 1px solid #FFF;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #8D79A3; /* Slightly different background for even rows */
+  }
+  
+  .back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6A5ACD; /* Or any other color */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    background-color: #5848B8; /* Darker shade for hover effect */
+  }
+  

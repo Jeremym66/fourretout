@@ -1,0 +1,121 @@
+version: '3.8'
+
+services:
+
+  db:
+    build:
+      context: ./db/
+    image: "s_postgres"
+    container_name: db
+    networks:
+      - back_v
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # pgadmin:
+  #   container_name: pgadmin
+  #   build:
+  #     context: ./pgadmin/
+  #   image: "s_pgadmin"
+  #   env_file:
+  #     - .env
+  #   networks:
+  #     - back_v
+  #   volumes:
+  #     - pgadmin_data:/var/lib/pgadmin
+  #   restart: unless-stopped
+  #   ports:
+  #     - "${PGADMIN_PORT}:${PGADMIN_INTERNAL_PORT}"
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+  #     - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+  #     - GUNICORN_ACCESS_LOGFILE=${GUNICORN_ACCESS_LOGFILE}
+  #     - PGADMIN_CONFIG_UPGRADE_CHECK_ENABLED=${PGADMIN_UPGRADE_CHECK_ENABLED}
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+
+  back:
+    container_name: back
+    build: ./python/
+    image: "s_django"
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - back_v
+    volumes:
+      - ./python/app/:/usr/src/app/
+      - static_volume:/api42/staticfiles
+    ports:
+      - "${DJANGO_PORT}:${DJANGO_PORT}"
+    expose:
+      - "8000"
+    environment:
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DJANGO_DEBUG}
+      - DJANGO_ALLOWED_HOSTS=localhost
+      - DATABASE_HOST=db
+      - DATABASE_NAME=${DB_NAME}
+      - DATABASE_USER=${DB_USER}
+      - DATABASE_PASSWORD=${DB_PASSWORD}
+    depends_on:
+      - db
+
+  front:
+    container_name: front
+    build: ./frontend
+    volumes:
+      - ./frontend:/src
+    expose:
+      - "3000"
+    networks:
+      - front_v
+
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf:ro
+      - ./nginx/certificates:/etc/nginx/certificates:ro
+      - ./nginx:/var/www/html
+      - static_volume:/api42/staticfiles
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - back
+      - front
+    networks:
+      - back_v
+      - front_v
+
+volumes:
+  pg_data:
+    name: pg_data
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./volumes/pg_data
+  static_volume:
+
+networks:
+  back_v:
+    driver: bridge
+    name: back_v
+  front_v:
+    driver: bridge
+    name: front_v

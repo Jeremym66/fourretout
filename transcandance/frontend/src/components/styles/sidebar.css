@@ -1,0 +1,88 @@
+
+#sidebar_style {
+  background: #4c457a;
+  font-family: Roboto;
+  color: #fff;
+  transition: all 0.3s;
+  position: relative;
+  width: 20%;
+  min-width: 15%;
+  min-height: 900px;
+}
+
+#sidebar_nav {
+  width: 100%;
+  padding: 10% 0%;
+  background: #4c457a;
+}
+
+#sidebar_header_logo {
+  margin: 10%;
+  font-size: 1.5rem;
+}
+
+.sidebar_title {
+  font-size: 1.1rem;
+  margin: 0% 5%;
+  text-align: center;
+  cursor: default;
+}
+
+.sidebar_link {
+  margin: 5% 0%;
+  text-decoration: none;
+  color: #fff;
+  cursor: default;
+}
+
+.ul_style {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  flex-flow: column;
+}
+
+button.button_style {
+  color: #fff;
+  background: transparent;
+  border: none
+}
+
+.fontawesome_style {
+  text-align: center;
+  margin: 5% 1%;
+  font-size: 2rem;
+}
+
+.profile_style {
+  display: flexbox;
+  flex-direction: column;
+  align-content: center;
+  position: absolute;
+  bottom: 1%;
+  width: 100%;
+}
+
+.profile_image_style {
+  margin: 10%;
+  width: 10%;
+  min-width: 40px;
+  max-width: 150px;
+  height: 10%;
+  min-height: 40px;
+  max-height: 150px;
+  border-radius: 50%;
+}
+
+.logout_style {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #fff;
+  cursor: default;
+}
+
+#logout_fontawesome {
+  text-align: center;
+  margin: 5% 1%;
+  font-size: 1.5rem;
+}

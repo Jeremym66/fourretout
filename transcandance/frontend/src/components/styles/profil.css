@@ -1,0 +1,72 @@
+.profil-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #7C5AC2;
+    /* Couleur d'arrière-plan de votre choix */
+}
+
+.user-stats {
+    background: #9B87B3;
+    /* Couleur d'arrière-plan de la section des statistiques */
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    /* Ajustez selon la largeur de votre choix */
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-photo {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.user-name {
+    font-size: 1.5em;
+    color: #FFF;
+}
+
+.user-username {
+    font-size: 1em;
+    color: #DDD;
+}
+
+.user-win-loss {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.other-users {
+    width: 100%;
+    max-width: 500px;
+    /* Ajustez selon la largeur de votre choix */
+}
+
+.users-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.other-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.other-user-avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/95a0fd6313.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dragon Pong</title>
+  </head>
+
+
+  <body>
+    <div id="menu-bar">
+      <div id="first-menu">
+        <section class="login_hero">
+          <button id="login_with_42_Button">Login with 42</button>
+          <button id="normal_login_Button">Login</button>
+          <button id="menu_Button">Menu</button>
+        </section>
+      </div>
+
+      <div id="second-menu" class="hideMenu">
+        <nav id="sidebar" class="nav justify-content-center">
+          <button id="profil-Btn" class="menu-btn" data-content="profil" data-toggle="popover" title="Profil"><i class="fas fa-user fontawesome_style"></i></button>
+          <button class="menu-btn" data-content="home" data-toggle="popover" title="Home"><i class="fas fa-compass fontawesome_style"></i></button>
+          <button class="menu-btn" data-content="game" data-toggle="popover" title="Game"><i class="fas fa-gamepad fontawesome_style"></i></button>
+          <button class="menu-btn" data-content="leaderboard" data-toggle="popover" title="Leaderboard"><i class="fas fa-trophy fontawesome_style"></i></button>
+          <button class="menu-btn" data-content="settings" data-toggle="popover" title="Settings"><i class="fas fa-cog fontawesome_style"></i></button>
+          <button class="menu-btn" data-content="credits" data-toggle="popover" title="Credits"><i class="fas fa-users fontawesome_style"></i></button>
+          <button class="menu-btn" data-content="logout" id="logout_Button" data-toggle="popover" title="Logout"><i class="fas fa-right-from-bracket fontawesome_style"></i></button>
+        </nav>
+      </div>
+    </div>
+
+
+    <div id="content">
+      <section id="home-content" class="hidden"></section>
+      <section class="row" id="profil-content" style="display: none;">
+        <div class="col-3"></div>
+        <div class="col-6" id="profil-column">
+          <div class="row">
+            <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">
+              <div class="tile">
+                <div class="wrapper">
+                  <div class="header" id="profile-login">Nom Prenom</div>
+                  <div class="banner-img"><img id="player-image" src="" alt="Image"></div>
+                  <div class="dates" id="profile-email">mail</div>
+                  <div class="stats">
+                    <div><strong>GAME PLAYED</strong><label id="profile-games">0</label></div>
+                    <div><strong>GAME WON</strong><label id="profile-wons">0</label></div>
+                    <div><strong>SCORE</strong><label id="profile-score">0</label></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3"></div>
+      </section>
+
+      <section id="game-content" class="hidden">
+        <img id="winnerImage" src="assets/game/winner.png" style="display: none;">
+        <img id="looserImage" src="assets/game/loose.png" style="display: none;">
+        <img id="pongImage" src="assets/game/pong.png" style="display: none;">
+        <canvas
+          id="pongCanvas"
+          width="963"
+          height="800"
+		      playerOne="seb"
+          tabindex="1">
+        </canvas>
+
+        <div>
+          <nav class="login_hero game_button" id="game_menu">
+            <button type="button" id="vs-btn">1 vs 1</button>
+            <button type="button" id="ai-btn">1 vs AI</button>
+            <button type="button" id="mod-btn">1 vs 1 with mod</button>
+            <button type="button" id="tour-btn">Tournament</button>
+          </nav>
+          <nav class="login_hero game_button" id="in_game">
+            <button type="button" id="start-btn">Start</button>
+            <button type="button" id="pause-btn">Pause</button>
+            <button type="button" id="quit-btn">Quit</button>
+          </nav>
+          <nav class="login_hero game_button" id="end_game">
+            <button type="button" id="ng-btn">New Game</button>
+            <button type="button" id="quit2-btn">Quit</button>
+          </nav>
+        </div>
+      </section>
+
+      <section class="row" id="settings-content" style="display: none;">
+        <div class="player-info">
+          <h2 id="profile-login">Modification des infos utilisateur</h2>
+          <div class="row" style="padding-top: 30px;">
+            <div class="col-6" id="change-info-window">
+              <form>
+                <label for="username">Prénom</label>
+                <input type="text" id="change-firstname">
+                <label for="email">Email</label>
+                <input type="text" id="change-email">
+                <input class="menu-btn" type="submit" value="Changer mes infos">
+              </form>
+            </div>
+            <div class="col-6" id="change-info-window">
+              <form>
+                <label for="password">Mot de passe</label>
+                <input type="password">
+                <div id="password-strength" style="display: none;">Minimum 8 characters</div>
+                <label for="password">One more time</label>
+                <input type="password">
+                <input class="menu-btn" type="submit" value="Changer mon mot de passe">
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-info">
+          <div class="row" style="padding-top: 30px;">
+            <div class="col-6">
+              <h2 id="profile-login">Configuration 2FA</h2>
+              <div class="form-check form-switch" style="justify-content: center; text-align: center; padding-top: 15px;">
+                  <input class="form-check-input" type="checkbox" role="switch" id="2fa-switch">
+                  <label class="form-check-label" for="2fa-switch">Activer le 2FA</label>
+              </div>
+            <div id="qrcode-container" class="hidden" style="justify-content: center; text-align: center; padding-top: 15px;"></div>
+            </div>
+            <div class="col-6 col-change-img" id="change-img-window">
+              <h2 id="profile-login">Changer de photo de profil</h2>
+              <div class="banner-change-img"><img id="change-image" src="" alt="Image"></div>
+              <form action="#">
+                <div class="input-file-container">
+                  <input class="input-file" id="my-file" type="file">
+                  <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
+                </div>
+                <p class="file-return"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="credits-content" style="display: none;">
+        <section class="wrapper">
+          <div class="container-fostrap">
+            <div class="content">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-2"></div>
+                    <div class="col-xs-12 col-sm-4">
+                      <div class="card">
+                        <div class="img-card">
+                          <img src="assets/players/player1.png" />
+                        </div>
+                        <div class="card-content">
+                          <h4 class="card-title"> sdestann - Nours </h4>
+                        </div>
+                        <div class="card-read-more">
+                          <a href="https://profile.intra.42.fr/users/sdestann" class="btn btn-link btn-block btn-link-intra">Link Intra</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                      <div class="card">
+                          <div class="img-card">
+                          <img src="assets/players/player2.png" />
+                          </div>
+                          <div class="card-content">
+                              <h4 class="card-title"> rloussig - Raph </h4>
+                          </div>
+                          <div class="card-read-more">
+                              <a href="https://profile.intra.42.fr/users/jmetezea" class="btn btn-link btn-block btn-link-intra">Link Intra</a>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-xs-12 col-sm-2"></div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="card">
+                      <div class="img-card">
+                        <img src="assets/players/player3.png" />
+                      </div>
+                      <div class="card-content">
+                        <h4 class="card-title"> jmetezea - Jerem </h4>
+                      </div>
+                      <div class="card-read-more">
+                        <a href="https://profile.intra.42.fr/users/jmetezea" class="btn btn-link btn-block btn-link-intra">Link Intra</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-4">
+                    <div class="card">
+                      <div class="img-card">
+                        <img src="assets/players/player4.png" />
+                      </div>
+                      <div class="card-content">
+                        <h4 class="card-title"> mabdali - Lamine </h4>
+                      </div>
+                      <div class="card-read-more">
+                        <a href="https://profile.intra.42.fr/users/jmetezea" class="btn btn-link btn-block btn-link-intra">Link Intra</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="leaderboard-content" class="hidden"></section>
+    </div>
+
+
+
+    <div class="dev">
+      <button id="admin_Button">Admin</button>
+      <button id="multi_Button">Multi</button>
+    </div>
+
+
+    <!-- ALL THE WINDOWS THAT APPEARS ON TOP OF THE REST -->
+    <div id="login-window" class="login-window">
+      <form id="login-form" onsubmit="event.preventDefault();">
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Se connecter">
+        <input id="createAccount-Button" type="button" value="Créer un compte">
+      </form>
+    </div>
+
+    <div id="register-window" class="register-window">
+      <form id="register-form" onsubmit="event.preventDefault();">
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" id="username-reg">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password-reg">
+        <div id="password-strength" style="display: none;">Minimum 8 characters</div>
+        <label for="password">One more time</label>
+        <input type="password" id="password-repeat">
+        <label for="username">Prénom</label>
+        <input type="text" id="firstname">
+        <label for="email">Email</label>
+        <input type="text" id="email">
+        <input id="register-Button" type="submit" value="Créer un compte">
+      </form>
+    </div>
+
+    <div id="multi-window" class="multi-window">
+      <div class="multi-content">
+        <div id="multi-text">Jeu en multijoueur</div>
+        <div>
+          <input id="add-player-btn" class="disabled" type="button" value="Ajouter joueur" disabled>
+          <input id="multi-btn" type="button" value="Close">
+        </div>
+      </div>
+    </div>
+
+    <div id="mp-users-main">
+    </div>
+
+    <div id="f2a-window" class="f2a-window">
+      <form class="f2a-content" onsubmit="event.preventDefault();">
+        <p id="f2a-text">Entrez votre code d'authentification f2a</p>
+        <input id="code2fa" type="text" placeholder="Code 2FA">
+        <div id="f2a-btns">
+          <input id="cancel-2fa" type="button" value="Annuler">
+          <input id="submit-2fa" type="submit" value="Valider">
+          <div id="caller-f2a" style="display: none;"></div>
+        </div>
+        <div id="f2a-login" style="display: none;">login</div>
+        <div id="caller-f2a" style="display: none;">caller</div>
+        <div id="f2a-score" style="display: none;">0</div>
+        <div id="f2a-img" style="display: none;">link</div>
+        <div id="f2a-playerId" style="display: none;">0</div>
+      </form>
+    </div>
+
+    <div id="popup-window" class="popup-window">
+      <div class="popup-content">
+        <p id="popup-text">Some text in the Popup</p>
+        <input id="popup-Button" type="button" value="Ok !">
+      </div>
+    </div>
+    <!-- ALL THE WINDOWS THAT APPEARS ON TOP OF THE REST -->
+
+
+    <script>
+      document.querySelector("html").classList.add('js');
+
+      var fileInput  = document.querySelector( ".input-file" ),
+      button     = document.querySelector( ".input-file-trigger" ),
+      the_return = document.querySelector(".file-return");
+
+      button.addEventListener( "keydown", function( event ) {
+        if ( event.keyCode == 13 || event.keyCode == 32 ) {
+              fileInput.focus();
+        }
+      });
+      button.addEventListener( "click", function( event ) {
+        fileInput.focus();
+        return false;
+      });
+      fileInput.addEventListener( "change", function( event ) {
+      the_return.innerHTML = this.value;
+      });
+    </script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <script type="module" src="components/identificator.js"></script>
+    <script type="module" src="components/login.js"></script>
+    <script type="module" src="components/api42.js"></script>
+    <script type="module" src="components/nav.js"></script>
+    <script type="module" src="components/pong_bdd.js"></script>
+    <script type="module" src="components/highscores.js"></script>
+    <script type="module" src="components/profil_infos.js"></script>
+    <script type="module" src="components/multiplayer.js"></script>
+
+	  <!-- scripts pong -->
+    <script type="module" src="./components/Game/pong_menu.js"></script>
+    <script type="module" src="./components/Game/pong.js"></script>
+
+    <script type="module" src="main.js"></script>
+
+
+  </body>
+</html>

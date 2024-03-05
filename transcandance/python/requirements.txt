@@ -1,0 +1,7 @@
+Django==4.2.10
+# Connector for PostgreSQL
+psycopg2
+# var dotenv
+python-dotenv
+requests
+django-cors-headers==4.3.1

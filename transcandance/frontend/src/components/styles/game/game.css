@@ -1,0 +1,64 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    height: 100vh;
+  }
+  
+  :root {
+    --paddle-left: #eaeaea;
+    --paddle-right: #eaeaea;
+    --black: #222222;
+    --ball: #eaeaea;
+    --text: #eaeaea;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: var(--black);
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .paddle {
+    height: 10vh;
+    width: 1vh;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+  }
+  
+  .player-paddle {
+    left: 1vw;
+    background-color: var(--paddle-left);
+  }
+  .computer-paddle {
+    right: 1vw;
+    background-color: var(--paddle-right);
+  }
+  
+  .ball {
+    position: absolute;
+    width: 2.5vh;
+    height: 2.5vh;
+    background-color: var(--ball);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+  }
+  
+  .score {
+    display: flex;
+    color: var(--text);
+  }
+  .score > div {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 2vh;
+    margin: 1vh 0;
+  }
+  

@@ -1,0 +1,13 @@
+<html>
+    <head><title>Merchex</title>
+    </head>
+    <body>
+		<p>Nous sommes la pour vous aider.</p>
+
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Envoyer">
+        </form>
+    </body>
+</html>

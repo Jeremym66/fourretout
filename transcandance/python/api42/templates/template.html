@@ -1,0 +1,14 @@
+<!-- my_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Informations utilisateur</title>
+</head>
+<body>
+    <h1>Informations utilisateur</h1>
+    {% for key, value in user_info.items %}
+        <p>{{ key }}: {{ value }}</p>
+    {% endfor %}
+    <!-- Ajoutez d'autres éléments en fonction des propriétés de user_info -->
+</body>
+</html>

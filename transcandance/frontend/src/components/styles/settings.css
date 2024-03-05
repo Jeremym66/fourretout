@@ -1,0 +1,68 @@
+.settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    min-height: 900px;
+    color:#FFF;
+    background-color: #7C5AC2; /* Couleur d'arrière-plan de la page */
+  }
+  
+  .settings-settings {
+    background: #9B87B3; /* Couleur d'arrière-plan du panneau de configuration */
+    border-radius: 10px; /* Arrondi des coins du panneau de configuration */
+    padding: 4%; /* Espace intérieur du panneau de configuration */
+    margin:4%;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    max-height: 90%;
+    min-width: 200px;
+    max-width: 90%; /* Largeur maximale du panneau de configuration */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre portée */
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    border-bottom: 1px solid #FFF; /* Ligne de séparation */
+  }
+
+  .user-info h2 {
+    padding-bottom: 2%;
+  }
+  
+  .user-photo {
+    border-radius: 50%; /* Rend l'image de l'utilisateur circulaire */
+    width: 100px; /* Largeur de l'image de l'utilisateur */
+    height: 100px; /* Hauteur de l'image de l'utilisateur */
+    object-fit: cover; /* Assure que l'image couvre bien la zone sans être déformée */
+    margin-bottom: 10px; /* Espace en dessous de l'image de l'utilisateur */
+  }
+  
+  .settings-options {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px; /* Espace au-dessus des options */
+  }
+  
+  .edit-menu {
+    color: #FFF;
+    cursor: default;
+    padding: 1%;
+    margin: 5px 0; /* Espace vertical entre les boutons */
+    text-align: left; /* Alignement du texte des boutons à gauche */
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  .settings_fontAwesome {
+    font-size: 2rem;
+  }
+  
+  .edit-menu:hover {
+    text-decoration: underline; /* Souligne le texte au survol */
+  }
+  
+  /* Ajoutez des icônes ou des styles supplémentaires selon vos besoins */
+  
