@@ -4,91 +4,93 @@
 #include <netdb.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <sys/select.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <strings.h>
 
-int extract_message(char **buf, char **msg)
+void putstr(char *str, int fd)
 {
-	char	*newbuf;
-	int	i;
-
-	*msg = 0;
-	if (*buf == 0)
-		return (0);
-	i = 0;
-	while ((*buf)[i])
-	{
-		if ((*buf)[i] == '\n')
-		{
-			newbuf = calloc(1, sizeof(*newbuf) * (strlen(*buf + i + 1) + 1));
-			if (newbuf == 0)
-				return (-1);
-			strcpy(newbuf, *buf + i + 1);
-			*msg = *buf;
-			(*msg)[i + 1] = 0;
-			*buf = newbuf;
-			return (1);
-		}
-		i++;
-	}
-	return (0);
+	write(fd, str, strlen(str));
+	exit(1);
 }
 
-char *str_join(char *buf, char *add)
+void	sendall(char *buffer, int serverfd, int clientfd, int fd_size)
 {
-	char	*newbuf;
-	int		len;
-
-	if (buf == 0)
-		len = 0;
-	else
-		len = strlen(buf);
-	newbuf = malloc(sizeof(*newbuf) * (len + strlen(add) + 1));
-	if (newbuf == 0)
-		return (0);
-	newbuf[0] = 0;
-	if (buf != 0)
-		strcat(newbuf, buf);
-	free(buf);
-	strcat(newbuf, add);
-	return (newbuf);
+	for (int i = 0; i <= fd_size; i++)
+		if (i != serverfd && i != clientfd)
+			send(i, buffer, strlen(buffer), 0);
 }
 
-
-int main() {
-	int sockfd, connfd, len;
-	struct sockaddr_in servaddr, cli; 
-
+int main(int argc, char **argv)
+{
+	int serverfd, clientfd, fd_size, readed, db[65535] = {0}, limit = 0;
+	struct sockaddr_in servaddr;
+	fd_set old_fd, new_fd;
+	char buffer[500030], buffer2[500000];
+	if (argc != 2)
+		putstr("Wrong number of elements\n", 2);
 	// socket create and verification 
-	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
-	if (sockfd == -1) { 
-		printf("socket creation failed...\n"); 
-		exit(0); 
-	} 
-	else
-		printf("Socket successfully created..\n"); 
+	serverfd = socket(AF_INET, SOCK_STREAM, 0); 
+	if (serverfd == -1)
+		putstr("Fatal error\n", 2);
 	bzero(&servaddr, sizeof(servaddr)); 
 
 	// assign IP, PORT 
 	servaddr.sin_family = AF_INET; 
 	servaddr.sin_addr.s_addr = htonl(2130706433); //127.0.0.1
-	servaddr.sin_port = htons(8081); 
-  
+	servaddr.sin_port = htons(atoi(argv[1])); 
 	// Binding newly created socket to given IP and verification 
-	if ((bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0) { 
-		printf("socket bind failed...\n"); 
-		exit(0); 
-	} 
-	else
-		printf("Socket successfully binded..\n");
-	if (listen(sockfd, 10) != 0) {
-		printf("cannot listen\n"); 
-		exit(0); 
+	if ((bind(serverfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
+		putstr("Fatal error\n", 2);
+	if (listen(serverfd, 10) != 0)
+		putstr("Fatal error\n", 2);
+	FD_ZERO(&old_fd);
+	FD_ZERO(&new_fd);
+	FD_SET(serverfd, &new_fd);
+	fd_size = serverfd;
+	while (1)
+	{
+		old_fd = new_fd;
+        if (select(fd_size + 1, &old_fd, NULL, NULL, NULL) < 0)
+            putstr("Fatal error\n", 2);
+        for (int id = 0; id <= fd_size; id++)
+        {
+            if (FD_ISSET(id, &old_fd) == 0)
+                continue;
+            if (id == serverfd)
+            {
+                if ((clientfd = accept(serverfd, NULL, NULL)) < 0)
+                    putstr("Fatal error\n", 2);
+                if (clientfd > fd_size)
+                    fd_size = clientfd;
+                db[clientfd] = limit++;
+                FD_SET(clientfd, &new_fd);
+                bzero(buffer, 500030);
+                sprintf(buffer, "server: client %d just arrived\n", db[clientfd]);
+                sendall(buffer, serverfd, clientfd, fd_size);
+            }
+            else
+            {
+                bzero(buffer, 500030);
+                bzero(buffer2, 500000);
+                readed = 1;
+                while (readed == 1 && (!buffer2[0] || buffer2[strlen(buffer2) - 1] != '\n'))
+                    readed = recv(id, &buffer2[strlen(buffer2)], 1, 0);
+                if (readed == 0)
+                {
+                    sprintf(buffer, "server: client %d just left\n", db[id]);
+                    sendall(buffer, serverfd, id, fd_size);
+                    FD_CLR(id, &new_fd);
+                    close(id);
+                }
+                else
+                {
+                    sprintf(buffer, "client %d: %s", db[id], buffer2);
+                    sendall(buffer, serverfd, id, fd_size);
+                }
+            }
+        }
 	}
-	len = sizeof(cli);
-	connfd = accept(sockfd, (struct sockaddr *)&cli, &len);
-	if (connfd < 0) { 
-        printf("server acccept failed...\n"); 
-        exit(0); 
-    } 
-    else
-        printf("server acccept the client...\n");
+	return(0);
 }

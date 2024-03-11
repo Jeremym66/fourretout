@@ -34,7 +34,8 @@ int main(int argc, char **argv)
         putstr("Fatal error\n", 2);
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
-    servaddr.sin_addr.s_addr = htonl(0b01111111000000000000000000000001);
+    // servaddr.sin_addr.s_addr = htonl(0b01111111000000000000000000000001);
+    servaddr.sin_addr.s_addr = htonl(2130706433);
     servaddr.sin_port = htons(atoi(argv[1]));
     if ((bind(serverfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
         putstr("Fatal error\n", 2);
